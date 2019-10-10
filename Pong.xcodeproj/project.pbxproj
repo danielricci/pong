@@ -40,7 +40,7 @@
 
 /* Begin PBXFileReference section */
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		039E6C13234E30B0004CCD78 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
+		039E6C13234E30B0004CCD78 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Pong; path = /Users/danielricci/Xcode/Pong/build/Debug/Pong; sourceTree = "<absolute>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		039E6C32234E37C5004CCD78 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = "<group>"; };
@@ -65,17 +65,7 @@
 				037280BD234F9A0D008472B1 /* README.md */,
 				039E6C29234E321A004CCD78 /* Libraries */,
 				039E6C15234E30B0004CCD78 /* Pong */,
-				039E6C14234E30B0004CCD78 /* Products */,
-				039E6C1D234E3181004CCD78 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		039E6C14234E30B0004CCD78 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				039E6C13234E30B0004CCD78 /* Pong */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		039E6C15234E30B0004CCD78 /* Pong */ = {
@@ -84,13 +74,6 @@
 				039E6C16234E30B0004CCD78 /* main.cpp */,
 			);
 			path = Pong;
-			sourceTree = "<group>";
-		};
-		039E6C1D234E3181004CCD78 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		039E6C29234E321A004CCD78 /* Libraries */ = {
@@ -146,7 +129,7 @@
 				Base,
 			);
 			mainGroup = 039E6C0A234E30B0004CCD78;
-			productRefGroup = 039E6C14234E30B0004CCD78 /* Products */;
+			productRefGroup = 039E6C0A234E30B0004CCD78;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
