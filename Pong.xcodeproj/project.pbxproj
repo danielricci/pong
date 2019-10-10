@@ -39,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		039E6C13234E30B0004CCD78 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		039E6C0A234E30B0004CCD78 = {
 			isa = PBXGroup;
 			children = (
+				037280BD234F9A0D008472B1 /* README.md */,
 				039E6C29234E321A004CCD78 /* Libraries */,
 				039E6C15234E30B0004CCD78 /* Pong */,
 				039E6C14234E30B0004CCD78 /* Products */,
