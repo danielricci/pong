@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0317C6822354276F00D43455 /* CRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0317C6802354276F00D43455 /* CRectangle.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		039E6C2F234E3283004CCD78 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		039E6C30234E3283004CCD78 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -39,8 +40,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0317C67F2352500C00D43455 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
+		0317C6802354276F00D43455 /* CRectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CRectangle.cpp; sourceTree = "<group>"; };
+		0317C6812354276F00D43455 /* CRectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CRectangle.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		039E6C13234E30B0004CCD78 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Pong; path = /Users/danielricci/Xcode/Pong/build/Debug/Pong; sourceTree = "<absolute>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		039E6C32234E37C5004CCD78 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 				037280BD234F9A0D008472B1 /* README.md */,
 				039E6C29234E321A004CCD78 /* Libraries */,
 				039E6C15234E30B0004CCD78 /* Pong */,
+				0317C67F2352500C00D43455 /* Pong */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				039E6C16234E30B0004CCD78 /* main.cpp */,
+				0317C6802354276F00D43455 /* CRectangle.cpp */,
+				0317C6812354276F00D43455 /* CRectangle.hpp */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -103,7 +109,7 @@
 			);
 			name = Pong;
 			productName = Pong;
-			productReference = 039E6C13234E30B0004CCD78 /* Pong */;
+			productReference = 0317C67F2352500C00D43455 /* Pong */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -144,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
+				0317C6822354276F00D43455 /* CRectangle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
