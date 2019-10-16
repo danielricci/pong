@@ -1,10 +1,8 @@
 #include <SDL.h>
 #include <stdio.h>
 
-struct Rectangle {
-    const int WIDTH { 1024 };
-    const int HEIGHT { 768 };
-} ScreenDimensions;
+const int SCREEN_WIDTH { 1024 };
+const int SCREEN_HEIGHT { 768 };
 
 int main(int argc, char** argv) {
     
@@ -19,8 +17,8 @@ int main(int argc, char** argv) {
         window = SDL_CreateWindow("Pong",
                                   SDL_WINDOWPOS_UNDEFINED,
                                   SDL_WINDOWPOS_UNDEFINED,
-                                  ScreenDimensions.WIDTH,
-                                  ScreenDimensions.HEIGHT,
+                                  SCREEN_WIDTH,
+                                  SCREEN_HEIGHT,
                                   SDL_WINDOW_SHOWN);
         if(window == nullptr) {
             printf("Window could not be created: %s\n", SDL_GetError());
@@ -55,10 +53,10 @@ int main(int argc, char** argv) {
 
                     // Draw Shape
                     SDL_Rect rectangle {
-                       .x = ScreenDimensions.WIDTH/4,
-                       .y = ScreenDimensions.HEIGHT/4,
-                       .w = ScreenDimensions.WIDTH/2,
-                       .h = ScreenDimensions.WIDTH/2
+                       .x = SCREEN_WIDTH/4,
+                       .y = SCREEN_HEIGHT/4,
+                       .w = SCREEN_WIDTH/2,
+                       .h = SCREEN_HEIGHT/2
                     };
                     SDL_SetRenderDrawColor(renderer, 0, 0, 0xFF, SDL_ALPHA_OPAQUE);
                     SDL_RenderFillRect(renderer, &rectangle);
