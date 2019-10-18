@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034F142C2359525F00584470 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034F142A2359525F00584470 /* Application.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		039E6C2F234E3283004CCD78 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		039E6C30234E3283004CCD78 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		0317C67F2352500C00D43455 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
+		034F142A2359525F00584470 /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		034F142B2359525F00584470 /* Application.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				039E6C16234E30B0004CCD78 /* main.cpp */,
+				034F142A2359525F00584470 /* Application.cpp */,
+				034F142B2359525F00584470 /* Application.hpp */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034F142C2359525F00584470 /* Application.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
