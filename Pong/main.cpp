@@ -1,16 +1,7 @@
-#include <SDL.h>
-#include "Application.hpp"
+#include "Game.hpp"
 
 int main(int argc, char** argv) {
-
-    Application* application = new Application("Pong", 1280, 1024);
-    application->initalize();
-    
-    while(application->isRunning()) {
-        application->handleEvents();
-        application->update();
-        application->render();
-    }
-    
-    delete application;
+    Game* game = new Game("Pong", 640, 480);
+    game->run();
+    delete game;
 }
