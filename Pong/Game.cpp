@@ -27,21 +27,28 @@ Game::Game(const char* title, int width, int height) : width(width), height(heig
 }
 
 Game::~Game() {
-    delete player;
+    delete paddle;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
 void Game::run() {
+    unsigned long long start { SDL_GetPerformanceCounter() };
+    unsigned long long end { 0 };
     while(running) {
-        input();
+        end = start;
+        start = SDL_GetPerformanceCounter();
+        deltaTime = static_cast<float>((start - end) * 1000 / static_cast<double>(SDL_GetPerformanceFrequency()));
+        std::cout << deltaTime << std::endl;
+        
+        processInput();
         update();
         render();
     }
 }
 
-void Game::input() {
+void Game::processInput() {
     SDL_Event event;
     while(SDL_PollEvent(&event) != 0) {
         switch(event.type) {
@@ -49,23 +56,25 @@ void Game::input() {
                 running = false;
                 break;
             default:
-                player->input(event);
+                paddle->processInput(event);
                 break;
         }
     }
 }
 
 void Game::update() {
-    player->update(0.f);
+    paddle->update(deltaTime);
 }
 
 void Game::render() {
-    //Clear screen
-    //SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-    //SDL_RenderClear(renderer);
+    // Clear screen
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(renderer);
     
-    // Render the shape
-    //SDL_SetRenderDrawColor(renderer, 0, 0, 0xFF, SDL_ALPHA_OPAQUE);
-    //SDL_RenderFillRect(renderer, player->getRectangle());
-    //SDL_RenderPresent(renderer);
+    // Draw the back buffer
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0xFF, SDL_ALPHA_OPAQUE);
+    paddle->render(renderer);
+    
+    // Flip the back buffer to the front buffer
+    SDL_RenderPresent(renderer);
 }

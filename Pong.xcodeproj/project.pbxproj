@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		034F142C2359525F00584470 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034F142A2359525F00584470 /* Game.cpp */; };
+		036380E92367C3A200A1133E /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036380E72367C3A200A1133E /* Rectangle.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		039E6C2F234E3283004CCD78 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		039E6C30234E3283004CCD78 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		039E6C38234E39E6004CCD78 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C32234E37C5004CCD78 /* SDL2_image.framework */; };
 		039E6C39234E39E6004CCD78 /* SDL2_image.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C32234E37C5004CCD78 /* SDL2_image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03B771F9235FC924005A9FCB /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B771F7235FC924005A9FCB /* Player.cpp */; };
+		03B771F9235FC924005A9FCB /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B771F7235FC924005A9FCB /* Paddle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,12 +45,14 @@
 		0317C67F2352500C00D43455 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
 		034F142A2359525F00584470 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		034F142B2359525F00584470 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		036380E72367C3A200A1133E /* Rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
+		036380E82367C3A200A1133E /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		039E6C32234E37C5004CCD78 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = "<group>"; };
-		03B771F7235FC924005A9FCB /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		03B771F8235FC924005A9FCB /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		03B771F7235FC924005A9FCB /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
+		03B771F8235FC924005A9FCB /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +84,10 @@
 				039E6C16234E30B0004CCD78 /* main.cpp */,
 				034F142A2359525F00584470 /* Game.cpp */,
 				034F142B2359525F00584470 /* Game.hpp */,
-				03B771F7235FC924005A9FCB /* Player.cpp */,
-				03B771F8235FC924005A9FCB /* Player.hpp */,
+				03B771F7235FC924005A9FCB /* Paddle.cpp */,
+				03B771F8235FC924005A9FCB /* Paddle.hpp */,
+				036380E72367C3A200A1133E /* Rectangle.cpp */,
+				036380E82367C3A200A1133E /* Rectangle.hpp */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -156,7 +161,8 @@
 			files = (
 				034F142C2359525F00584470 /* Game.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
-				03B771F9235FC924005A9FCB /* Player.cpp in Sources */,
+				036380E92367C3A200A1133E /* Rectangle.cpp in Sources */,
+				03B771F9235FC924005A9FCB /* Paddle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
