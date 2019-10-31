@@ -2,28 +2,24 @@
 #define Game_hpp
 
 #include <SDL.h>
-#include "Paddle.hpp"
 
 class Game {
   
 public:
     Game(const char* title, int width, int height);
     ~Game();
-    void run();
+    
+    void startGame();
     
 private:
-    const int width { 0 };
-    const int height { 0 };
-    bool running { false };
-    float deltaTime { 0 };
-    
     SDL_Window* window { nullptr };
     SDL_Renderer* renderer { nullptr };
-    Paddle* paddle = new Paddle();
     
-    void processInput();
-    void update();
-    void render();
+    bool isGameRunning { false };
+    
+    void processGameInput();
+    void processGameUpdate();
+    void ProcessGameRender();
 };
 
 #endif
