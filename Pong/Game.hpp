@@ -2,6 +2,7 @@
 #define Game_hpp
 
 #include <SDL.h>
+#include "Paddle.hpp"
 
 class Game {
   
@@ -12,14 +13,18 @@ public:
     void startGame();
     
 private:
+    
+    Paddle* playerOne = { nullptr };
+    Paddle* playerTwo = { nullptr };
+    
     SDL_Window* window { nullptr };
-    SDL_Renderer* renderer { nullptr };
+    SDL_Renderer* windowRenderer { nullptr };
     
     bool isGameRunning { false };
     
     void processGameInput();
     void processGameUpdate();
-    void ProcessGameRender();
+    void processGameRender();
 };
 
 #endif
