@@ -2,29 +2,41 @@
 #include <iostream>
 
 Paddle::Paddle(int x, int y) {
-    rectangle = new Rectangle(x, y, WIDTH, HEIGHT);
+    rectangle = new Rectangle(x, y, 5, 60);
 }
 
 Paddle::~Paddle() {
     delete rectangle;
 }
 
-void Paddle::handleInput(const SDL_Event& event) {
+void Paddle::input(const SDL_Event& event) {
     switch(event.type) {
-        case SDL_KEYUP: {
+        case SDL_KEYDOWN: {
             switch(event.key.keysym.sym) {
                 case SDLK_UP: {
+                    orientationV = -1;
+                    break;
+                }
+                case SDLK_DOWN: {
+                    orientationV = 1;
                     break;
                 }
             }
             break;
         }
-        case SDL_KEYDOWN: {
+        case SDL_KEYUP: {
+            orientationV = 0;
             break;
         }
     }
 }
 
-void Paddle::handleRender(SDL_Renderer& renderer) {
+void Paddle::update() {
+    if(orientationV != 0) {
+        rectangle->getRectangle()->y += (velocity * orientationV);
+    }
+}
+
+void Paddle::render(SDL_Renderer& renderer) {
     SDL_RenderFillRect(&renderer, rectangle->getRectangle());
 }

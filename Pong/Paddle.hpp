@@ -9,12 +9,14 @@ public:
     Paddle(int x, int y);
     ~Paddle();
     
-    void handleInput(const SDL_Event& event);
-    void handleRender(SDL_Renderer& renderer);
+    void input(const SDL_Event& event);
+    void render(SDL_Renderer& renderer);
+    void update();
     
 private:
-    const int WIDTH { 5 };
-    const int HEIGHT { 60 };
+    
+    int orientationV { 0 };
+    const int velocity { 7 };
     
     Rectangle* rectangle { nullptr };
 };

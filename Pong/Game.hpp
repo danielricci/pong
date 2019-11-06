@@ -10,7 +10,7 @@ public:
     Game(const char* title, int width, int height);
     ~Game();
     
-    void startGame();
+    void startMainGameLoop();
     
 private:
     
@@ -21,10 +21,12 @@ private:
     SDL_Renderer* windowRenderer { nullptr };
     
     bool isGameRunning { false };
+    int framesPerSecond { 0 };
     
-    void processGameInput();
-    void processGameUpdate();
-    void processGameRender();
+    void input();
+    void update();
+    void render();
+    void updateFrameInformation();
 };
 
 #endif
