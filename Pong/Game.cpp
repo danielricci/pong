@@ -27,7 +27,9 @@ Game::Game(const char* title, int width, int height) {
                 int height = 0;
                 SDL_GetRendererOutputSize(windowRenderer, &width, &height);
                 playerOne = new Paddle(40, (height/2) - 20);
+                playerOne->setBindings(SDLK_a, SDLK_z);
                 playerTwo = new Paddle(width - 40, (height/2) - 20);
+                playerTwo->setBindings(SDLK_j, SDLK_m);
 
             }
         }
@@ -99,6 +101,7 @@ void Game::input() {
             }
             case SDL_KEYDOWN: {
                 playerOne->input(event);
+                playerTwo->input(event);
                 break;
             }
         }
@@ -107,6 +110,7 @@ void Game::input() {
 
 void Game::update() {
     playerOne->update();
+    playerTwo->update();
 }
 
 void Game::render() {

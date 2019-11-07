@@ -12,20 +12,20 @@ Paddle::~Paddle() {
 void Paddle::input(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYDOWN: {
-            switch(event.key.keysym.sym) {
-                case SDLK_UP: {
-                    orientationV = -1;
-                    break;
-                }
-                case SDLK_DOWN: {
-                    orientationV = 1;
-                    break;
-                }
+            SDL_Keycode keyCode = event.key.keysym.sym;
+            if(keyCode == upBinding) {
+                orientationV = -1;
+            }
+            else if(keyCode == downBinding) {
+                orientationV = 1;
             }
             break;
         }
         case SDL_KEYUP: {
-            orientationV = 0;
+            SDL_Keycode keyCode = event.key.keysym.sym;
+            if(keyCode == upBinding || keyCode == downBinding) {
+                orientationV = 0;
+            }
             break;
         }
     }
