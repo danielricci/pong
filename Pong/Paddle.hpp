@@ -14,17 +14,29 @@ public:
         this->downBinding = downBinding;
     }
     
+    static void setMaximalHeight(int maximalHeight) {
+        Paddle::maximalHeight = maximalHeight;
+    }
+    
     void input(const SDL_Event& event);
     void render(SDL_Renderer& renderer);
     void update();
     
 private:
+    enum class Direction {
+        UP = -1,
+        NONE,
+        DOWN
+    } direction { Direction:: NONE };
     
-    SDL_Keycode upBinding { -1 };
-    SDL_Keycode downBinding { -1 };
+    const int WIDTH { 5 };
+    const int HEIGHT { 60 };
+    const int VELOCITY { 5 };
     
-    int orientationV { 0 };
-    const int velocity { 7 };
+    static int maximalHeight;
+    
+    SDL_Keycode upBinding { SDLK_UNKNOWN };
+    SDL_Keycode downBinding { SDLK_UNKNOWN };
     
     Rectangle* rectangle { nullptr };
 };

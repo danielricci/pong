@@ -1,8 +1,9 @@
 #include "Paddle.hpp"
-#include <iostream>
+
+int Paddle::maximalHeight { 0 };
 
 Paddle::Paddle(int x, int y) {
-    rectangle = new Rectangle(x, y, 5, 60);
+    rectangle = new Rectangle(x, y, WIDTH, HEIGHT);
 }
 
 Paddle::~Paddle() {
@@ -14,17 +15,17 @@ void Paddle::input(const SDL_Event& event) {
         case SDL_KEYDOWN: {
             SDL_Keycode keyCode = event.key.keysym.sym;
             if(keyCode == upBinding) {
-                orientationV = -1;
+                direction = Direction::UP;
             }
             else if(keyCode == downBinding) {
-                orientationV = 1;
+                direction = Direction::DOWN;
             }
             break;
         }
         case SDL_KEYUP: {
             SDL_Keycode keyCode = event.key.keysym.sym;
             if(keyCode == upBinding || keyCode == downBinding) {
-                orientationV = 0;
+                direction = Direction::NONE;
             }
             break;
         }
@@ -32,8 +33,11 @@ void Paddle::input(const SDL_Event& event) {
 }
 
 void Paddle::update() {
-    if(orientationV != 0) {
-        rectangle->getRectangle()->y += (velocity * orientationV);
+    if(this->direction != Direction::NONE) {
+        int newPosition = rectangle->getRectangle()->y + (VELOCITY * static_cast<int>(this->direction));
+        if(newPosition >= 0 && newPosition <= (maximalHeight - HEIGHT)) {
+            rectangle->getRectangle()->y = newPosition;
+        }
     }
 }
 

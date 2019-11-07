@@ -22,15 +22,15 @@ Game::Game(const char* title, int width, int height) {
                 std::cout << "Initialization Successful" << std::endl;
                 isGameRunning = true;
 
-                // Perform last minute initializations of the game
-                int width = 0;
-                int height = 0;
+                // Get the `actual` width and height of the window
                 SDL_GetRendererOutputSize(windowRenderer, &width, &height);
+                
+                // Player paddle initialization
+                Paddle::setMaximalHeight(height);
                 playerOne = new Paddle(40, (height/2) - 20);
                 playerOne->setBindings(SDLK_a, SDLK_z);
                 playerTwo = new Paddle(width - 40, (height/2) - 20);
                 playerTwo->setBindings(SDLK_j, SDLK_m);
-
             }
         }
     }
