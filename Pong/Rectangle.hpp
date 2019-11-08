@@ -1,5 +1,4 @@
-#ifndef Rectangle_hpp
-#define Rectangle_hpp
+#pragma once
 
 #include <SDL.h>
 
@@ -11,5 +10,3 @@ public:
 private:
     SDL_Rect* rectangle;
 };
-
-#endif

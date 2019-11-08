@@ -1,5 +1,4 @@
-#ifndef Paddle_hpp
-#define Paddle_hpp
+#pragma once
 
 #include "Rectangle.hpp"
 
@@ -40,5 +39,3 @@ private:
     
     Rectangle* rectangle { nullptr };
 };
-
-#endif

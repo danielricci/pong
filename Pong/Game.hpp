@@ -1,5 +1,4 @@
-#ifndef Game_hpp
-#define Game_hpp
+#pragma once
 
 #include <SDL.h>
 #include "Paddle.hpp"
@@ -28,5 +27,3 @@ private:
     void render();
     void updateFrameInformation();
 };
-
-#endif
