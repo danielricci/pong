@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include "Paddle.hpp"
+#include "Ball.hpp"
 
 class Game {
   
@@ -13,8 +14,9 @@ public:
     
 private:
     
-    Paddle* playerOne = { nullptr };
-    Paddle* playerTwo = { nullptr };
+    Paddle* playerOne { nullptr };
+    Paddle* playerTwo { nullptr };
+    Ball* ball { nullptr };
     
     SDL_Window* window { nullptr };
     SDL_Renderer* windowRenderer { nullptr };

@@ -31,6 +31,7 @@ Game::Game(const char* title, int width, int height) {
                 playerOne->setBindings(SDLK_a, SDLK_z);
                 playerTwo = new Paddle(width - 40, (height/2) - 20);
                 playerTwo->setBindings(SDLK_j, SDLK_m);
+                ball = new Ball(width/2, height/2);
             }
         }
     }
@@ -111,6 +112,7 @@ void Game::input() {
 void Game::update() {
     playerOne->update();
     playerTwo->update();
+    ball->update();
 }
 
 void Game::render() {
@@ -120,8 +122,13 @@ void Game::render() {
     
     // Draw the back buffer
     SDL_SetRenderDrawColor(windowRenderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
+    
+    // Player Render
     playerOne->render(*windowRenderer);
     playerTwo->render(*windowRenderer);
+    
+    // Ball Render
+    ball->render(*windowRenderer);
     
     // Blit
     SDL_RenderPresent(windowRenderer);

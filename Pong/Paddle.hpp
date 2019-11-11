@@ -3,7 +3,7 @@
 #include "Rectangle.hpp"
 
 class Paddle {
-    
+
 public:
     Paddle(int x, int y);
     ~Paddle();
@@ -29,7 +29,7 @@ private:
     } direction { Direction:: NONE };
     
     const int WIDTH { 5 };
-    const int HEIGHT { 60 };
+    const int HEIGHT { 75 };
     const int VELOCITY { 5 };
     
     static int maximalHeight;
