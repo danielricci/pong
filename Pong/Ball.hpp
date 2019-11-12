@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SDL.h>
-#include "Circle.hpp"
+#include "Rectangle.hpp"
 
 class Ball {
 public:
@@ -9,7 +9,8 @@ public:
     void update();
     void render(SDL_Renderer& renderer);
 private:
-    const int RADIUS { 7 };
+    const int WIDTH { 7 };
+    const int HEIGHT { WIDTH };
     const int VELOCITY { 5 };
-    Circle* circle { nullptr };
+    Rectangle* rectangle { nullptr };
 };
