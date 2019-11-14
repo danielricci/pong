@@ -15,10 +15,6 @@
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		039E6C2F234E3283004CCD78 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		039E6C30234E3283004CCD78 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		039E6C38234E39E6004CCD78 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C32234E37C5004CCD78 /* SDL2_image.framework */; };
-		039E6C39234E39E6004CCD78 /* SDL2_image.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C32234E37C5004CCD78 /* SDL2_image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03FE040F237902B300BEDBB2 /* SDL2_gfx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AC78F32379026F00F96276 /* SDL2_gfx.framework */; };
-		03FE0410237902B300BEDBB2 /* SDL2_gfx.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03AC78F32379026F00F96276 /* SDL2_gfx.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,9 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03FE0410237902B300BEDBB2 /* SDL2_gfx.framework in Embed Frameworks */,
 				039E6C30234E3283004CCD78 /* SDL2.framework in Embed Frameworks */,
-				039E6C39234E39E6004CCD78 /* SDL2_image.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,8 +55,6 @@
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
-		039E6C32234E37C5004CCD78 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_image.framework; sourceTree = "<group>"; };
-		03AC78F32379026F00F96276 /* SDL2_gfx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_gfx.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03FE040F237902B300BEDBB2 /* SDL2_gfx.framework in Frameworks */,
 				039E6C2F234E3283004CCD78 /* SDL2.framework in Frameworks */,
-				039E6C38234E39E6004CCD78 /* SDL2_image.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,8 +100,6 @@
 		039E6C29234E321A004CCD78 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				03AC78F32379026F00F96276 /* SDL2_gfx.framework */,
-				039E6C32234E37C5004CCD78 /* SDL2_image.framework */,
 				039E6C2A234E326A004CCD78 /* SDL2.framework */,
 			);
 			path = Libraries;
@@ -306,11 +294,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libraries/SDL2.framework/**",
-					"$(PROJECT_DIR)/Libraries/SDL2_image.framework/**",
-					"$(PROJECT_DIR)/Libraries/SDL2_gfx.framework/**",
-				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/SDL2.framework/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -325,11 +309,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libraries/SDL2.framework/**",
-					"$(PROJECT_DIR)/Libraries/SDL2_image.framework/**",
-					"$(PROJECT_DIR)/Libraries/SDL2_gfx.framework/**",
-				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/SDL2.framework/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
