@@ -11,7 +11,6 @@
 		032C4B4F236EFFB500B78C94 /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032C4B4D236EFFB500B78C94 /* Paddle.cpp */; };
 		034F142C2359525F00584470 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 034F142A2359525F00584470 /* Game.cpp */; };
 		035D58CF2375A01100AF9D5F /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035D58CD2375A01100AF9D5F /* Ball.cpp */; };
-		035D58D22375A53E00AF9D5F /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035D58D02375A53E00AF9D5F /* Circle.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		039E6C2F234E3283004CCD78 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		039E6C30234E3283004CCD78 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -50,8 +49,6 @@
 		034F142B2359525F00584470 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		035D58CD2375A01100AF9D5F /* Ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
 		035D58CE2375A01100AF9D5F /* Ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
-		035D58D02375A53E00AF9D5F /* Circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
-		035D58D12375A53E00AF9D5F /* Circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Circle.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
@@ -91,8 +88,6 @@
 				030A2389236F05D8000D0E2F /* Rectangle.hpp */,
 				035D58CD2375A01100AF9D5F /* Ball.cpp */,
 				035D58CE2375A01100AF9D5F /* Ball.hpp */,
-				035D58D02375A53E00AF9D5F /* Circle.cpp */,
-				035D58D12375A53E00AF9D5F /* Circle.hpp */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -164,7 +159,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				034F142C2359525F00584470 /* Game.cpp in Sources */,
-				035D58D22375A53E00AF9D5F /* Circle.cpp in Sources */,
 				032C4B4F236EFFB500B78C94 /* Paddle.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
 				030A238A236F05D8000D0E2F /* Rectangle.cpp in Sources */,
