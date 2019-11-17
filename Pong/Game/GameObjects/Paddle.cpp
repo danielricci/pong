@@ -1,8 +1,9 @@
 #include "Paddle.hpp"
 
+
 int Paddle::maximalHeight { 0 };
 
-Paddle::Paddle(int x, int y) {
+Paddle::Paddle(int x, int y, SDL_Keycode upBinding, SDL_Keycode downBinding) : upBinding(upBinding), downBinding(downBinding) {
     rectangle = new Rectangle(x, y, WIDTH, HEIGHT);
 }
 

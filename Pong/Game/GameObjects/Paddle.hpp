@@ -1,25 +1,21 @@
 #pragma once
 
-#include "Rectangle.hpp"
+#include "Engine/GameObject.hpp"
+#include "Engine/Primitives/Rectangle.hpp"
 
-class Paddle {
+class Paddle : public GameObject {
 
 public:
-    Paddle(int x, int y);
+    Paddle(int x, int y, SDL_Keycode upBinding, SDL_Keycode downBinding);
     ~Paddle();
-    
-    void setBindings(SDL_Keycode upBinding, SDL_Keycode downBinding) {
-        this->upBinding = upBinding;
-        this->downBinding = downBinding;
-    }
-    
+        
     static void setMaximalHeight(int maximalHeight) {
         Paddle::maximalHeight = maximalHeight;
     }
     
-    void input(const SDL_Event& event);
-    void render(SDL_Renderer& renderer);
-    void update();
+    virtual void input(const SDL_Event& event) override;
+    virtual void render(SDL_Renderer& renderer) override;
+    virtual void update() override;
     
 private:
     enum class Direction {

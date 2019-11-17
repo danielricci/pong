@@ -1,9 +1,11 @@
 #pragma once
 
-#include <SDL.h>
-#include "Rectangle.hpp"
+#include "Engine/GameObject.hpp"
+#include "Engine/Primitives/Rectangle.hpp"
 
-class Ball {
+#include <SDL.h>
+
+class Ball /*: public GameObject */{
 public:
     Ball(int x, int y);
     void update();
@@ -11,6 +13,6 @@ public:
 private:
     const int WIDTH { 7 };
     const int HEIGHT { WIDTH };
-    const int VELOCITY { 5 };
+    const int VELOCITY { 1 };
     Rectangle* rectangle { nullptr };
 };
