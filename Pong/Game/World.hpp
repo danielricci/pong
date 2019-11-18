@@ -6,7 +6,7 @@
 
 #include <list>
 
-class World final {
+class World {
 public:
     World(SDL_Window& window, SDL_Renderer& renderer);
     ~World() = default;
@@ -22,7 +22,6 @@ private:
     bool isGameRunning { false };
     void updateFrameInformation();
     
-    void input();
     void update();
     void render();
 };

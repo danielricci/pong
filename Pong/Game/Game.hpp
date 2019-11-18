@@ -4,7 +4,7 @@
 
 class Game : public Application {
 public:
-    Game(const char* title, int width, int height);
-    virtual ~Game();
+    Game();
+    virtual ~Game() = default;
     virtual void run() override;
 };

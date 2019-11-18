@@ -1,37 +1,35 @@
 #pragma once
 
 #include "Engine/GameObject.hpp"
-#include "Engine/Primitives/Rectangle.hpp"
+#include "Engine/Rectangle.hpp"
+#include "Game/Components/PaddleInputComponent.hpp"
 
 class Paddle : public GameObject {
 
 public:
+    // TODO Remove upBinding and downBinding, this should be put within the PaddleInputBinding constructor or in its parent
     Paddle(int x, int y, SDL_Keycode upBinding, SDL_Keycode downBinding);
     ~Paddle();
         
+    // TODO - remove me
     static void setMaximalHeight(int maximalHeight) {
         Paddle::maximalHeight = maximalHeight;
     }
     
-    virtual void input(const SDL_Event& event) override;
     virtual void render(SDL_Renderer& renderer) override;
-    virtual void update() override;
+    virtual void update(const SDL_Event& event) override;
     
 private:
-    enum class Direction {
-        UP = -1,
-        NONE,
-        DOWN
-    } direction { Direction:: NONE };
     
     const int WIDTH { 5 };
     const int HEIGHT { 75 };
     const int VELOCITY { 5 };
-    
-    static int maximalHeight;
-    
-    SDL_Keycode upBinding { SDLK_UNKNOWN };
-    SDL_Keycode downBinding { SDLK_UNKNOWN };
-    
+        
     Rectangle* rectangle { nullptr };
+    
+    // TODO - remove me
+    static int maximalHeight;
+
+    // TODO - remove me and have a list of components
+    PaddleInputComponent* paddleInputComponent { nullptr };
 };

@@ -4,12 +4,9 @@
 
 class Application {
 public:
-    Application(const char* title, int width, int height) {
-    }
-    
-    virtual ~Application() = default;
-    virtual void run() {
-    }
+    Application(const char* title, int width, int height);
+    virtual ~Application();
+    virtual void run() = 0;
     
 protected:
     SDL_Window* window { nullptr };

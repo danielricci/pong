@@ -1,4 +1,4 @@
-#include "Ball.hpp"
+//#include "Ball.hpp"
 #include "Paddle.hpp"
 #include "World.hpp"
 
@@ -25,7 +25,7 @@ renderer(renderer) {
     //gameObjects.push_front(new Ball(width/2, height/2));
 }
 
-void World::input() {
+void World::update() {
     SDL_Event event;
     while(SDL_PollEvent(&event) != 0) {
         switch(event.type) {
@@ -39,7 +39,7 @@ void World::input() {
                     std::cout << "FPS: " << framesPerSecond << std::endl;
                 }
                 for(GameObject* gameObject : gameObjects) {
-                    gameObject->input(event);
+                    gameObject->update(event);
                 }
                 break;
             }
@@ -70,15 +70,8 @@ void World::run() {
     isGameRunning = true;
     while(isGameRunning) {
         updateFrameInformation();
-        input();
         update();
         render();
-    }
-}
-
-void World::update() {
-    for(GameObject* gameObject : gameObjects) {
-        gameObject->update();
     }
 }
 
