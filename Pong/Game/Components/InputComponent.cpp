@@ -1,12 +1,11 @@
-#include "PaddleInputComponent.hpp"
+#include "InputComponent.hpp"
 
-PaddleInputComponent::PaddleInputComponent(Paddle& paddle, SDL_Keycode upBinding, SDL_Keycode downBinding)
-: InputComponent(paddle),
-upBinding(upBinding),
+InputComponent::InputComponent(Paddle& paddle, SDL_Keycode upBinding, SDL_Keycode downBinding)
+: upBinding(upBinding),
 downBinding(downBinding) {
 }
 
-void PaddleInputComponent::update(const SDL_Event& event) {
+void InputComponent::update(const SDL_Event& event) {
     switch(event.type) {
         case SDL_KEYDOWN: {
             SDL_Keycode keyCode = event.key.keysym.sym;

@@ -1,6 +1,6 @@
-//#include "Ball.hpp"
-#include "Paddle.hpp"
-#include "World.hpp"
+#include "Game/World.hpp"
+//#include "Game/GameObjects/Ball.hpp"
+#include "Game/GameObjects/Paddle.hpp"
 
 #include <iostream>
 
@@ -20,8 +20,6 @@ renderer(renderer) {
     gameObjects.push_front(new Paddle(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
 
     // Setup the Ball
-    // TODO - This isn't technically the center of
-    //        the screen, so put some time into doing this cleanly
     //gameObjects.push_front(new Ball(width/2, height/2));
 }
 

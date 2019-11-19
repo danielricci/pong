@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/GameObject.hpp"
-#include "Engine/Rectangle.hpp"
-#include "Game/Components/PaddleInputComponent.hpp"
+#include "Game/Components/InputComponent.hpp"
+#include "Game/GameObjects/GameObject.hpp"
+#include "Game/Primitives/Rectangle.hpp"
 
 class Paddle : public GameObject {
 
@@ -27,9 +27,7 @@ private:
         
     Rectangle* rectangle { nullptr };
     
-    // TODO - remove me
     static int maximalHeight;
 
-    // TODO - remove me and have a list of components
-    PaddleInputComponent* paddleInputComponent { nullptr };
+    InputComponent* inputComponent { nullptr };
 };

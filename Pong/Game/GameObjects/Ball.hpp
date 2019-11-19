@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Engine/GameObject.hpp"
-#include "Engine/Rectangle.hpp"
+#include "Game/GameObjects/GameObject.hpp"
+#include "Game/Primitives/Rectangle.hpp"
 
 #include <SDL.h>
 

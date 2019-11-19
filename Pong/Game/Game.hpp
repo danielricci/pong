@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Application.hpp"
+#include "Game/Application.hpp"
 
 class Game : public Application {
 public:
