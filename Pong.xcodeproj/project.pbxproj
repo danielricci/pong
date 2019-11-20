@@ -14,7 +14,6 @@
 		03B6DECB23830E3C00BC7E1C /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; };
 		03B6DECC23830E3C00BC7E1C /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03D47C5F2381B00A0004A67B /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D47C5D2381B00A0004A67B /* InputComponent.cpp */; };
-		03D47C6123822DBD0004A67B /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D47C6023822DBD0004A67B /* Application.cpp */; };
 		03EFD234237D004B006EF2A5 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* World.cpp */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +47,6 @@
 		0322201A2380FF9D004B0BD1 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		032C4B4D236EFFB500B78C94 /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
 		032C4B4E236EFFB500B78C94 /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
-		034F142B2359525F00584470 /* Application.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
 		035D58CD2375A01100AF9D5F /* Ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
 		035D58CE2375A01100AF9D5F /* Ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		03D47C5D2381B00A0004A67B /* InputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputComponent.cpp; sourceTree = "<group>"; };
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
-		03D47C6023822DBD0004A67B /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		03EFD232237D004B006EF2A5 /* World.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		03EFD233237D004B006EF2A5 /* World.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
 		03EFD237237E48D9006EF2A5 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
@@ -78,8 +75,6 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				034F142B2359525F00584470 /* Application.hpp */,
-				03D47C6023822DBD0004A67B /* Application.cpp */,
 				03EFD233237D004B006EF2A5 /* World.hpp */,
 				03EFD232237D004B006EF2A5 /* World.cpp */,
 				032220192380FF9D004B0BD1 /* Game.cpp */,
@@ -212,7 +207,6 @@
 				03D47C5F2381B00A0004A67B /* InputComponent.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
 				035D58CF2375A01100AF9D5F /* Ball.cpp in Sources */,
-				03D47C6123822DBD0004A67B /* Application.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +329,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99XD8PYX9Y;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/SDL2.framework/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,7 +346,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99XD8PYX9Y;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/SDL2.framework/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";

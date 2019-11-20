@@ -1,10 +1,14 @@
 #pragma once
 
-#include "Game/Application.hpp"
+#include <SDL.h>
 
-class Game : public Application {
+class Game {
 public:
-    Game();
-    virtual ~Game() = default;
-    virtual void run() override;
+    Game(const char* title, int width, int height);
+    ~Game();
+    void run();
+    
+private:
+    SDL_Window* window { nullptr };
+    SDL_Renderer* renderer { nullptr };
 };
