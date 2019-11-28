@@ -1,6 +1,4 @@
 #include "Game/World.hpp"
-//#include "Game/GameObjects/Ball.hpp"
-#include "Game/GameObjects/Paddle.hpp"
 
 #include <iostream>
 
@@ -14,10 +12,8 @@ renderer(renderer) {
     SDL_GetWindowSize(&window, &width, &height);
     
     // Setup the Paddles
-    // TODO Move this call to the physics component
-    Paddle::setMaximalHeight(height);
-    gameObjects.push_front(new Paddle(40, (height / 2) - 20, SDLK_a, SDLK_z));
-    gameObjects.push_front(new Paddle(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
+    //gameObjects.push_front(new PaddleObject(40, (height / 2) - 20, SDLK_a, SDLK_z));
+    //gameObjects.push_front(new PaddleObject(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
 
     // Setup the Ball
     //gameObjects.push_front(new Ball(width/2, height/2));
@@ -36,9 +32,7 @@ void World::update() {
                 if(event.key.keysym.sym == SDLK_F12) {
                     std::cout << "FPS: " << framesPerSecond << std::endl;
                 }
-                for(GameObject* gameObject : gameObjects) {
-                    gameObject->update(event);
-                }
+                po->foo(event);
                 break;
             }
         }
@@ -53,9 +47,9 @@ void World::render() {
     // Draw the back buffer
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
 
-    for(GameObject* gameObject : gameObjects) {
-        gameObject->render(renderer);
-    }
+    //for(GameObject* gameObject : gameObjects) {
+        //gameObject->render(renderer);
+    //}
     
     // Ball Render
     // ball->render(*windowRenderer);

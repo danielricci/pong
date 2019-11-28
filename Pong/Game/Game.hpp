@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Game/World.hpp"
+
 #include <SDL.h>
 
 class Game {
@@ -11,4 +13,5 @@ public:
 private:
     SDL_Window* window { nullptr };
     SDL_Renderer* renderer { nullptr };
+    World* world { nullptr };
 };

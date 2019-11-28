@@ -1,20 +1,49 @@
 #pragma once
 
+#include "Game/Components/Component.hpp"
+
 #include <SDL.h>
 
-class Paddle;
+#include <unordered_map>
+#include <string>
 
-class InputComponent {
+class InputComponent : public Component {
+
 public:
-    InputComponent(Paddle& paddle, SDL_Keycode upBinding, SDL_Keycode downBinding);
-    void update(const SDL_Event& event);
-private:
-    enum class Direction {
-        UP = -1,
-        NONE,
-        DOWN
-    } direction { Direction:: NONE };
+    InputComponent() = default;
     
-    SDL_Keycode upBinding { SDLK_UNKNOWN };
-    SDL_Keycode downBinding { SDLK_UNKNOWN };
+    void addBindings(SDL_Keycode keyCode, const std::string& action) {
+        inputBindings[keyCode] = action;
+    }
+    
+    void clearBindings() {
+        inputBindings.clear();
+    }
+    
+    void handleEvent(const SDL_Event& event) {
+        InputBindingsMap::const_iterator inputIterator = inputBindings.find(event.key.keysym.sym);
+        if(inputIterator != inputBindings.end()) {
+            ActionBindingsMap::const_iterator actionIterator = actionBindings.find(inputIterator->second);
+            if(actionIterator != actionBindings.end()) {
+                actionIterator->second(event);
+            }
+        }
+    }
+    
+    virtual Type getIdentifier() const override {
+        return Component::Type::InputComponent;
+    }
+
+public:
+    void registerActionBinding(const std::string& action, std::function<void(const SDL_Event&)> functor) {
+    //void registerActionBinding(const std::string& action, const std::function<void(const SDL_Event&)>& functor) {
+        actionBindings[action] = functor;
+    }
+    
+private:
+    typedef std::unordered_map<SDL_Keycode, std::string> InputBindingsMap;
+    InputBindingsMap inputBindings;
+    
+    typedef std::unordered_map<std::string, std::function<void(const SDL_Event&)>> ActionBindingsMap;
+    ActionBindingsMap actionBindings;
 };

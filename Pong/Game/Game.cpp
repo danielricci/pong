@@ -1,5 +1,4 @@
 #include "Game.hpp"
-#include "World.hpp"
 
 #include <iostream>
 
@@ -21,6 +20,7 @@ Game::Game(const char* title, int width, int height) {
             else {
                 SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
                 std::cout << "Initialization Successful" << std::endl;
+                world = new World(*window, *renderer);
             }
         }
     }
@@ -30,10 +30,10 @@ Game::~Game() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    
+    delete world;
 }
 
 void Game::run() {
-    World* world = new World(*window, *renderer);
     world->run();
-    delete world;
 }

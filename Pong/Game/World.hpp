@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Game/GameObjects/GameObject.hpp"
+#include "Game/GameObjects/PaddleObject.hpp"
+
 
 #include <SDL.h>
 
@@ -13,6 +15,7 @@ public:
     void run();
 private:
 
+    PaddleObject* po = new PaddleObject(0, 0);
     std::list<GameObject*> gameObjects;
     
     SDL_Window& window;
