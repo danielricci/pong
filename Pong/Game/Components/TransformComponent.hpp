@@ -6,7 +6,7 @@ class TransformComponent : public Component {
 public:
     TransformComponent() = default;
     TransformComponent(int x, int y) : x(x), y(y) { }
-    
+  
     void setTranslationX(int x) {
         this->x = x;
     }
@@ -14,10 +14,14 @@ public:
     void setTranslationY(int y) {
         this->y = y;
     }
-    
+        
     void setTranslation(int x, int y) {
         setTranslationX(x);
         setTranslationY(y);
+    }
+    
+    void setVelocity(int velocity) {
+        this->velocity = velocity;
     }
     
     void moveTranslationX(int x) {
@@ -33,15 +37,22 @@ public:
         moveTranslationY(y);
     }
     
-    void getTranslation(int* outX, int* outY) {
-        if(outX != nullptr) {
-            *outX = this->x;
-        }
-        if(outY != nullptr) {
-            *outY = this->y;
-        }
+    void moveVelocity(int velocity) {
+        setVelocity(this->velocity + velocity);
     }
     
+    int getX() const {
+        return x;
+    }
+    
+    int getY() const {
+        return y;
+    }
+    
+    int getVelocity() const {
+        return velocity;
+    }
+        
     virtual Type getIdentifier() const override {
         return Component::Type::TransformComponent;
     }
@@ -49,4 +60,6 @@ public:
 private:
     int x { 0 };
     int y { 0 };
+    
+    int velocity { 1 };
 };

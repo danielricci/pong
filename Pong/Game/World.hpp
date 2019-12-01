@@ -17,7 +17,7 @@ public:
 private:
     
     std::list<GameObject*> gameObjects;
-    //MovementSystem* movementSystem = new MovementSystem();
+    MovementSystem* movementSystem = new MovementSystem();
     
     SDL_Window& window;
     SDL_Renderer& renderer;

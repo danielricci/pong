@@ -13,12 +13,13 @@ renderer(renderer) {
     
     // Setup the Paddles
     gameObjects.push_front(new PaddleObject(40, (height / 2) - 20, SDLK_a, SDLK_z));
-    gameObjects.push_front(new PaddleObject(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
+    //gameObjects.push_front(new PaddleObject(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
 }
 
 void World::update() {
     SDL_Event event;
     while(SDL_PollEvent(&event) != 0) {
+
         if(event.key.keysym.sym == SDLK_F12) {
             std::cout << "FPS: " << framesPerSecond << std::endl;
         }
@@ -28,11 +29,18 @@ void World::update() {
                 isGameRunning = false;
                 break;
             }
-            default:
-                //for(GameObject* gameObject : gameObjects) {
-                    //movementSystem->process(gameObject);
-    //            }
-                break;
+            default: {
+                for(GameObject* gameObject : gameObjects) {
+                    InputComponent* inputComponent = gameObject->getComponent<InputComponent>();
+                    if(inputComponent != nullptr) {
+                        inputComponent->handleEvent(event);
+                    }
+                }
+                
+                for(GameObject* gameObject : gameObjects) {
+                    movementSystem->process(gameObject);
+                }
+            }
         }
     }
 }
