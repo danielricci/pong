@@ -3,6 +3,7 @@
 #include "Game/GameObjects/GameObject.hpp"
 #include "Game/GameObjects/PaddleObject.hpp"
 
+#include "Game/Systems/MovementSystem.hpp"
 
 #include <SDL.h>
 
@@ -14,9 +15,9 @@ public:
     ~World() = default;
     void run();
 private:
-
-    PaddleObject* po = new PaddleObject(0, 0);
+    
     std::list<GameObject*> gameObjects;
+    //MovementSystem* movementSystem = new MovementSystem();
     
     SDL_Window& window;
     SDL_Renderer& renderer;

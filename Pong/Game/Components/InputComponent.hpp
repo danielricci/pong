@@ -16,10 +16,6 @@ public:
         inputBindings[keyCode] = action;
     }
     
-    void clearBindings() {
-        inputBindings.clear();
-    }
-    
     void handleEvent(const SDL_Event& event) {
         InputBindingsMap::const_iterator inputIterator = inputBindings.find(event.key.keysym.sym);
         if(inputIterator != inputBindings.end()) {
@@ -36,7 +32,6 @@ public:
 
 public:
     void registerActionBinding(const std::string& action, std::function<void(const SDL_Event&)> functor) {
-    //void registerActionBinding(const std::string& action, const std::function<void(const SDL_Event&)>& functor) {
         actionBindings[action] = functor;
     }
     

@@ -47,6 +47,8 @@
 		0322201A2380FF9D004B0BD1 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PaddleObject.cpp; sourceTree = "<group>"; };
 		032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaddleObject.hpp; sourceTree = "<group>"; };
+		03583C1D23935A84002EE59D /* Pong */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = Pong; path = "../../../../../../../../Developer/Xcode/DerivedData/Pong-fqoduutpzwvvokbfgauggjhrwcnh/Build/Products/Debug/Pong"; sourceTree = "<group>"; };
+		03583C1E23935AC9002EE59D /* Pong */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = Pong; path = "../../../../../../../../Developer/Xcode/DerivedData/Pong-fqoduutpzwvvokbfgauggjhrwcnh/Build/Products/Debug/Pong"; sourceTree = "<group>"; };
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
@@ -77,15 +79,23 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				03EFD233237D004B006EF2A5 /* World.hpp */,
-				03EFD232237D004B006EF2A5 /* World.cpp */,
 				032220192380FF9D004B0BD1 /* Game.cpp */,
+				03EFD232237D004B006EF2A5 /* World.cpp */,
 				0322201A2380FF9D004B0BD1 /* Game.hpp */,
+				03EFD233237D004B006EF2A5 /* World.hpp */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
 				03EFD235237E48BA006EF2A5 /* GameObjects */,
 				03A78AFF23845F0000856F98 /* Primitives */,
+				03583C1C23935A4D002EE59D /* Systems */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		03583C1C23935A4D002EE59D /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Systems;
 			sourceTree = "<group>";
 		};
 		039E6C0A234E30B0004CCD78 = {
@@ -101,9 +111,9 @@
 		039E6C15234E30B0004CCD78 /* Pong */ = {
 			isa = PBXGroup;
 			children = (
-				03F5F9272383172400653DBE /* Pong.entitlements */,
-				039E6C16234E30B0004CCD78 /* main.cpp */,
 				032220182380FE60004B0BD1 /* Game */,
+				039E6C16234E30B0004CCD78 /* main.cpp */,
+				03F5F9272383172400653DBE /* Pong.entitlements */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -119,6 +129,7 @@
 		03A78AFF23845F0000856F98 /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
+				03583C1D23935A84002EE59D /* Pong */,
 				030A2389236F05D8000D0E2F /* Rectangle.hpp */,
 			);
 			path = Primitives;
@@ -127,10 +138,11 @@
 		03EFD235237E48BA006EF2A5 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				03583C1E23935AC9002EE59D /* Pong */,
 				03EFD237237E48D9006EF2A5 /* GameObject.hpp */,
 				035DB9DF238B75D90025B2F7 /* GameObject.cpp */,
-				032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */,
 				032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */,
+				032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -141,8 +153,8 @@
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
-				03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */,
 				03A1E57F238F56E900A02AB7 /* PaddleInputComponent.hpp */,
+				03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -329,6 +341,7 @@
 		039E6C1B234E30B0004CCD78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_ENTITLEMENTS = Pong/Pong.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -346,6 +359,7 @@
 		039E6C1C234E30B0004CCD78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_ENTITLEMENTS = Pong/Pong.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

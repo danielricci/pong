@@ -13,3 +13,12 @@ GameObject::~GameObject() {
         delete component;
     }
 }
+
+Component* GameObject::addComponent(Component* component) {
+    components.push_back(component);
+    return component;
+}
+
+TransformComponent* GameObject::getTransform() const {
+    return transformComponent;
+}
