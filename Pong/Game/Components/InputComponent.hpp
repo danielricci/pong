@@ -30,7 +30,6 @@ public:
         return Component::Type::InputComponent;
     }
 
-public:
     void registerActionBinding(const std::string& action, std::function<void(const SDL_Event&)> functor) {
         actionBindings[action] = functor;
     }

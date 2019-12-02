@@ -6,7 +6,7 @@ class TransformComponent : public Component {
 public:
     TransformComponent() = default;
     TransformComponent(int x, int y) : x(x), y(y) { }
-  
+    
     void setTranslationX(int x) {
         this->x = x;
     }
@@ -61,5 +61,6 @@ private:
     int x { 0 };
     int y { 0 };
     
+    // TODO Does it make sense to have this here?
     int velocity { 1 };
 };

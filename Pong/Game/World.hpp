@@ -4,6 +4,7 @@
 #include "Game/GameObjects/PaddleObject.hpp"
 
 #include "Game/Systems/MovementSystem.hpp"
+#include "Game/Systems/RenderSystem.hpp"
 
 #include <SDL.h>
 
@@ -12,20 +13,19 @@
 class World {
 public:
     World(SDL_Window& window, SDL_Renderer& renderer);
-    ~World() = default;
+    ~World();
     void run();
 private:
-    
-    std::list<GameObject*> gameObjects;
-    MovementSystem* movementSystem = new MovementSystem();
-    
+
     SDL_Window& window;
     SDL_Renderer& renderer;
+    
+    std::list<GameObject*> gameObjects;
+
+    MovementSystem* movementSystem = new MovementSystem();
+    RenderSystem* renderSystem = new RenderSystem(renderer);
     
     int framesPerSecond { 0 };
     bool isGameRunning { false };
     void updateFrameInformation();
-    
-    void update();
-    void render();
 };

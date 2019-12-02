@@ -6,7 +6,8 @@ public:
     enum class Type {
         TransformComponent,
         InputComponent,
-        PaddleInputComponent
+        PaddleInputComponent,
+        RenderComponent
     };
     virtual Type getIdentifier() const = 0;
 };

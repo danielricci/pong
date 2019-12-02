@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		0322201B2380FF9D004B0BD1 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032220192380FF9D004B0BD1 /* Game.cpp */; };
 		032C4B4F236EFFB500B78C94 /* PaddleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */; };
-		03583C2123935F37002EE59D /* MovementSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03583C1F23935F36002EE59D /* MovementSystem.cpp */; };
 		035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* GameObject.cpp */; };
+		03987B56239559A60004639E /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B55239559A60004639E /* RenderComponent.cpp */; };
+		03987B5923955A110004639E /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B5823955A110004639E /* RenderSystem.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */; };
 		03B6DECB23830E3C00BC7E1C /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; };
 		03B6DECC23830E3C00BC7E1C /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 039E6C2A234E326A004CCD78 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03EBAAB0239190B400F8BDE5 /* MovementSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */; };
 		03EFD234237D004B006EF2A5 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* World.cpp */; };
 /* End PBXBuildFile section */
 
@@ -48,19 +50,21 @@
 		0322201A2380FF9D004B0BD1 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PaddleObject.cpp; sourceTree = "<group>"; };
 		032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaddleObject.hpp; sourceTree = "<group>"; };
-		03583C1D23935A84002EE59D /* Pong */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = Pong; path = "../../../../../../../../Developer/Xcode/DerivedData/Pong-fqoduutpzwvvokbfgauggjhrwcnh/Build/Products/Debug/Pong"; sourceTree = "<group>"; };
-		03583C1E23935AC9002EE59D /* Pong */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = Pong; path = "../../../../../../../../Developer/Xcode/DerivedData/Pong-fqoduutpzwvvokbfgauggjhrwcnh/Build/Products/Debug/Pong"; sourceTree = "<group>"; };
-		03583C1F23935F36002EE59D /* MovementSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovementSystem.cpp; sourceTree = "<group>"; };
-		03583C2023935F36002EE59D /* MovementSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MovementSystem.hpp; sourceTree = "<group>"; };
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
+		03987B55239559A60004639E /* RenderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderComponent.cpp; sourceTree = "<group>"; };
+		03987B5723955A110004639E /* RenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderSystem.hpp; sourceTree = "<group>"; };
+		03987B5823955A110004639E /* RenderSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderSystem.cpp; sourceTree = "<group>"; };
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		039E6C2A234E326A004CCD78 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
 		03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PaddleInputComponent.cpp; sourceTree = "<group>"; };
 		03A1E57F238F56E900A02AB7 /* PaddleInputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaddleInputComponent.hpp; sourceTree = "<group>"; };
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
+		03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MovementSystem.cpp; sourceTree = "<group>"; };
+		03EBAAAF239190B400F8BDE5 /* MovementSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovementSystem.hpp; sourceTree = "<group>"; };
 		03EFD232237D004B006EF2A5 /* World.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		03EFD233237D004B006EF2A5 /* World.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
 		03EFD237237E48D9006EF2A5 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
@@ -82,34 +86,25 @@
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				032220192380FF9D004B0BD1 /* Game.cpp */,
-				03EFD232237D004B006EF2A5 /* World.cpp */,
-				0322201A2380FF9D004B0BD1 /* Game.hpp */,
-				03EFD233237D004B006EF2A5 /* World.hpp */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
+				032220192380FF9D004B0BD1 /* Game.cpp */,
+				0322201A2380FF9D004B0BD1 /* Game.hpp */,
 				03EFD235237E48BA006EF2A5 /* GameObjects */,
 				03A78AFF23845F0000856F98 /* Primitives */,
-				03583C1C23935A4D002EE59D /* Systems */,
+				03EBAAAD23918F4900F8BDE5 /* Systems */,
+				03EFD232237D004B006EF2A5 /* World.cpp */,
+				03EFD233237D004B006EF2A5 /* World.hpp */,
 			);
 			path = Game;
-			sourceTree = "<group>";
-		};
-		03583C1C23935A4D002EE59D /* Systems */ = {
-			isa = PBXGroup;
-			children = (
-				03583C1F23935F36002EE59D /* MovementSystem.cpp */,
-				03583C2023935F36002EE59D /* MovementSystem.hpp */,
-			);
-			path = Systems;
 			sourceTree = "<group>";
 		};
 		039E6C0A234E30B0004CCD78 = {
 			isa = PBXGroup;
 			children = (
-				037280BD234F9A0D008472B1 /* README.md */,
 				039E6C29234E321A004CCD78 /* Libraries */,
-				039E6C15234E30B0004CCD78 /* Pong */,
 				0317C67F2352500C00D43455 /* Pong */,
+				039E6C15234E30B0004CCD78 /* Pong */,
+				037280BD234F9A0D008472B1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,16 +129,25 @@
 		03A78AFF23845F0000856F98 /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
-				03583C1D23935A84002EE59D /* Pong */,
 				030A2389236F05D8000D0E2F /* Rectangle.hpp */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
 		};
+		03EBAAAD23918F4900F8BDE5 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				03987B5823955A110004639E /* RenderSystem.cpp */,
+				03987B5723955A110004639E /* RenderSystem.hpp */,
+				03EBAAAF239190B400F8BDE5 /* MovementSystem.hpp */,
+				03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
 		03EFD235237E48BA006EF2A5 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
-				03583C1E23935AC9002EE59D /* Pong */,
 				03EFD237237E48D9006EF2A5 /* GameObject.hpp */,
 				035DB9DF238B75D90025B2F7 /* GameObject.cpp */,
 				032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */,
@@ -155,6 +159,8 @@
 		03EFD23C237E49CA006EF2A5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				03987B55239559A60004639E /* RenderComponent.cpp */,
+				03987B54239559A60004639E /* RenderComponent.hpp */,
 				035DB9DD238B73EF0025B2F7 /* Component.hpp */,
 				03D47C5E2381B00A0004A67B /* InputComponent.hpp */,
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
@@ -223,12 +229,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */,
+				03987B5923955A110004639E /* RenderSystem.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */,
-				03583C2123935F37002EE59D /* MovementSystem.cpp in Sources */,
+				03EBAAB0239190B400F8BDE5 /* MovementSystem.cpp in Sources */,
 				032C4B4F236EFFB500B78C94 /* PaddleObject.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* World.cpp in Sources */,
 				0322201B2380FF9D004B0BD1 /* Game.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
+				03987B56239559A60004639E /* RenderComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +362,7 @@
 				DEVELOPMENT_TEAM = 99XD8PYX9Y;
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries";
+				GCC_C_LANGUAGE_STANDARD = c11;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/SDL2.framework/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -372,6 +381,7 @@
 				DEVELOPMENT_TEAM = 99XD8PYX9Y;
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries";
+				GCC_C_LANGUAGE_STANDARD = c11;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/SDL2.framework/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
