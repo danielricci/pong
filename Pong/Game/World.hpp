@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Game/GameObjects/GameObject.hpp"
-#include "Game/GameObjects/PaddleObject.hpp"
 
 #include "Game/Systems/MovementSystem.hpp"
 #include "Game/Systems/RenderSystem.hpp"
