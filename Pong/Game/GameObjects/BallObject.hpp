@@ -6,14 +6,11 @@
 class BallObject : public GameObject {
 
 public:
-    BallObject(int x, int y);
-    ~BallObject() = default;
+    BallObject(float x, float y);
     
 private:
-    
-    const int VELOCITY { 1 };
     const int WIDTH { 5 };
-    const int HEIGHT { WIDTH };
+    const int HEIGHT { 5 };
 
     RenderComponent* renderComponent = new RenderComponent(WIDTH, HEIGHT);
 };

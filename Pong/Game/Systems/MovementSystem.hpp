@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Game/Components/PaddleInputComponent.hpp"
 #include "Game/GameObjects/GameObject.hpp"
 
 class MovementSystem {

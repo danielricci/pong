@@ -2,65 +2,45 @@
 
 #include "Game/Components/Component.hpp"
 
+#include <Eigen/Dense>
+#include <SDL.h>
+
 class TransformComponent : public Component {
 public:
     TransformComponent() = default;
-    TransformComponent(int x, int y) : x(x), y(y) { }
-    
-    void setTranslationX(int x) {
-        this->x = x;
-    }
-    
-    void setTranslationY(int y) {
-        this->y = y;
-    }
-        
-    void setTranslation(int x, int y) {
-        setTranslationX(x);
-        setTranslationY(y);
-    }
-    
-    void setVelocity(int velocity) {
-        this->velocity = velocity;
-    }
-    
-    void moveTranslationX(int x) {
-        setTranslationX(this->x + x);
-    }
-    
-    void moveTranslationY(int y) {
-        setTranslationY(this->y + y);
-    }
 
-    void moveTranslation(int x, int y) {
-        moveTranslationX(x);
-        moveTranslationY(y);
+    TransformComponent(int x, int y) {
+        this->positionVector(0) = x;
+        this->positionVector(1) = y;
     }
     
-    void moveVelocity(int velocity) {
-        setVelocity(this->velocity + velocity);
+    Eigen::Vector2f& position() {
+        return positionVector;
     }
     
-    int getX() const {
-        return x;
+    Eigen::Vector2f& velocity() {
+        return velocityVector;
     }
     
-    int getY() const {
-        return y;
+    void applyVelocity() {
+        this->positionVector += velocityVector;
     }
     
-    int getVelocity() const {
-        return velocity;
-    }
-        
-    virtual Type getIdentifier() const override {
+    virtual Type identifier() const override {
         return Component::Type::TransformComponent;
     }
     
-private:
-    int x { 0 };
-    int y { 0 };
+    SDL_Rect rectangle() const {
+        SDL_Rect rectangle;
+        rectangle.x = positionVector(0);
+        rectangle.y = positionVector(1);
+        rectangle.w = 0;
+        rectangle.h = 0;
+        
+        return rectangle;
+    }
     
-    // TODO Does it make sense to have this here?
-    int velocity { 1 };
+private:
+    Eigen::Vector2f positionVector { 0, 0 };
+    Eigen::Vector2f velocityVector { 0, 0 };
 };

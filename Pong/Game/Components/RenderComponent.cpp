@@ -1,6 +1,8 @@
 #include "RenderComponent.hpp"
 
 RenderComponent::RenderComponent(int width, int height) {
-    rectangle.w = width;
-    rectangle.h = height;
+    rect.x = 0;
+    rect.y = 0;
+    rect.w = width;
+    rect.h = height;
 }

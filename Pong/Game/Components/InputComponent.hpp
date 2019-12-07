@@ -26,7 +26,7 @@ public:
         }
     }
     
-    virtual Type getIdentifier() const override {
+    virtual Type identifier() const override {
         return Component::Type::InputComponent;
     }
 

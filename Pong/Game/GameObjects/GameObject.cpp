@@ -1,11 +1,8 @@
 #include "Game/GameObjects/GameObject.hpp"
 
-GameObject::GameObject() {
-    addComponent(transformComponent);
-}
-
-GameObject::GameObject(int x, int y) : GameObject() {
-    transformComponent->setTranslation(x, y);
+GameObject::GameObject(int x, int y) {
+    this->transformComponent = new TransformComponent(x, y);
+    this->addComponent(transformComponent);
 }
 
 GameObject::~GameObject() {

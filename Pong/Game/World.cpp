@@ -17,7 +17,7 @@ renderer(renderer) {
     // Setup the Paddles
     gameObjects.push_front(new PaddleObject(40, (height / 2) - 20, SDLK_a, SDLK_z));
     gameObjects.push_front(new PaddleObject(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
-    gameObjects.push_front(new BallObject(width/2, height/2));
+    //gameObjects.push_front(new BallObject(width/2, height/2));
 }
 
 World::~World() {

@@ -9,5 +9,5 @@ public:
         PaddleInputComponent,
         RenderComponent
     };
-    virtual Type getIdentifier() const = 0;
+    virtual Type identifier() const = 0;
 };

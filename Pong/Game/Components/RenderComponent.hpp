@@ -8,14 +8,14 @@ class RenderComponent : public Component {
 public:
     RenderComponent(int width, int height);
     
-    virtual Type getIdentifier() const override {
+    virtual Type identifier() const override {
         return Component::Type::RenderComponent;
     }
     
-    SDL_Rect getRectangle() const {
-        return rectangle;
+    SDL_Rect rectangle() const {
+        return rect;
     }
     
 private:
-    SDL_Rect rectangle;
+    SDL_Rect rect;
 };
