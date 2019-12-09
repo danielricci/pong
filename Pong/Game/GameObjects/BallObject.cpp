@@ -4,5 +4,5 @@
 
 BallObject::BallObject(float x, float y) : GameObject(x, y) {
     //this->getTransform()->velocity() = Eigen::Vector2f(0, 1);
-    //addComponent(renderComponent);
+    this->addComponent(renderComponent);
 }

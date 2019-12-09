@@ -2,14 +2,12 @@
 #include "Game/GameObjects/PaddleObject.hpp"
 #include "Game/World.hpp"
 
-
 #include <iostream>
 
 World::World(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
     
-    // Get the dimensions of the world
     int width { 0 };
     int height { 0 };
     SDL_GetWindowSize(&window, &width, &height);
@@ -17,7 +15,7 @@ renderer(renderer) {
     // Setup the Paddles
     gameObjects.push_front(new PaddleObject(40, (height / 2) - 20, SDLK_a, SDLK_z));
     gameObjects.push_front(new PaddleObject(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
-    //gameObjects.push_front(new BallObject(width/2, height/2));
+    gameObjects.push_front(new BallObject(width/2, height/2));
 }
 
 World::~World() {
