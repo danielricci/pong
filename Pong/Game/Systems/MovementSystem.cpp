@@ -5,7 +5,6 @@
 #include <Eigen/Dense>
 #include <cmath>
 
-
 void MovementSystem::process(GameObject* gameObject) const {
     if(gameObject != nullptr) {
         PaddleInputComponent* paddleInputComponent = gameObject->getComponent<PaddleInputComponent>();
@@ -18,6 +17,10 @@ void MovementSystem::process(GameObject* gameObject) const {
                 transform->velocity() = velocity;
                 transform->applyVelocity();
             }
+        }
+        else {
+            TransformComponent* transformComponent = gameObject->getTransform();
+            transformComponent->applyVelocity();
         }
     }
 }

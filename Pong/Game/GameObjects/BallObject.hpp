@@ -9,8 +9,8 @@ public:
     BallObject(float x, float y);
     
 private:
-    const int WIDTH { 5 };
-    const int HEIGHT { 5 };
+    const int WIDTH { 10 };
+    const int HEIGHT { 10 };
 
     RenderComponent* renderComponent = new RenderComponent(WIDTH, HEIGHT);
 };
