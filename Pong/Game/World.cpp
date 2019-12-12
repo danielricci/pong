@@ -66,7 +66,25 @@ void World::run() {
         for(GameObject* gameObject : gameObjects) {
             renderSystem->update(gameObject);
         }
+        
+        renderPlayingField();
+        
         SDL_RenderPresent(&renderer);
+    }
+}
+
+void World::renderPlayingField() const {
+    int windowWidth { 0 };
+    int windowHeight { 0 };
+    SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
+    
+    SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
+    for (int height = 0; height < windowHeight; ++height)
+    {
+        if(height % 3 == 0)
+        {
+            SDL_RenderDrawPoint(&renderer, windowWidth / 2, height);
+        }
     }
 }
 

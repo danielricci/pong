@@ -27,4 +27,5 @@ private:
     int framesPerSecond { 0 };
     bool isGameRunning { false };
     void updateFrameInformation();
+    void renderPlayingField() const;
 };
