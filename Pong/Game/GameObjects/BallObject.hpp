@@ -7,10 +7,10 @@ class BallObject : public GameObject {
 
 public:
     BallObject(float x, float y);
-    
-private:
-    const int WIDTH { 10 };
-    const int HEIGHT { 10 };
 
+    inline static const int WIDTH { 10 };
+    inline static const int HEIGHT { 10 };
+private:
+    
     RenderComponent* renderComponent = new RenderComponent(WIDTH, HEIGHT);
 };

@@ -8,14 +8,14 @@ World::World(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
     
-    int width { 0 };
-    int height { 0 };
-    SDL_GetWindowSize(&window, &width, &height);
+    int windowWidth { 0 };
+    int windowHeight { 0 };
+    SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
     
     // Setup the Paddles
-    gameObjects.push_front(new PaddleObject(40, (height / 2) - 20, SDLK_a, SDLK_z));
-    gameObjects.push_front(new PaddleObject(width - 40, (height / 2) - 20, SDLK_j, SDLK_m));
-    //gameObjects.push_front(new BallObject(width/2, height/2));
+    gameObjects.push_front(new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_a, SDLK_z));
+    gameObjects.push_front(new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_j, SDLK_m));
+    gameObjects.push_front(new BallObject((windowWidth/2) - (BallObject::WIDTH/2), (windowHeight/2) - (BallObject::HEIGHT/2)));
 }
 
 World::~World() {

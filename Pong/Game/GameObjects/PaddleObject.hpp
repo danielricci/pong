@@ -12,11 +12,10 @@ public:
     PaddleObject(int x, int y, SDL_Keycode moveUp, SDL_Keycode moveDown);
     ~PaddleObject() = default;
     
+    inline static const int WIDTH { 6 };
+    inline static const int HEIGHT { 70 };
+    
 private:
-    
-    const int WIDTH { 5 };
-    const int HEIGHT { 75 };
-    
     PaddleInputComponent* paddleInputComponent = new PaddleInputComponent();
     RenderComponent* renderComponent { nullptr };
 };
