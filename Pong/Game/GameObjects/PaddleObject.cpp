@@ -3,14 +3,13 @@
 #include <Eigen/Dense>
 
 PaddleObject::PaddleObject(int x, int y, SDL_Keycode moveUp, SDL_Keycode moveDown) :
-GameObject(x, y) {
+GameObject(x, y, WIDTH, HEIGHT) {
 
-    this->getTransform()->velocity() = Eigen::Vector2f(0, 5);
+    getTransform()->velocity = Eigen::Vector2f(0, 5);
     
     paddleInputComponent->addBindings(moveUp, paddleInputComponent->ACTION_MOVE_UP);
     paddleInputComponent->addBindings(moveDown, paddleInputComponent->ACTION_MOVE_DOWN);
     addComponent(paddleInputComponent);
-    
-    renderComponent = new RenderComponent(WIDTH, HEIGHT);
     addComponent(renderComponent);
+    addComponent(collisionComponent);
 }

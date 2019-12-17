@@ -1,7 +1,7 @@
 #include "Game/GameObjects/GameObject.hpp"
 
-GameObject::GameObject(int x, int y) {
-    this->transformComponent = new TransformComponent(x, y);
+GameObject::GameObject(int x, int y, int width, int height) {
+    this->transformComponent = new TransformComponent(x, y, width, height);
     this->addComponent(transformComponent);
 }
 

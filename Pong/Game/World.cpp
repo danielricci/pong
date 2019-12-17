@@ -29,24 +29,31 @@ World::~World() {
 }
 
 void World::run() {
-    isGameRunning = true;
-    while(isGameRunning) {
+    
+    // Initial clearing of the screen before proceeding
+    SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(&renderer);
+    SDL_RenderPresent(&renderer);
+    
+    while(true) {
         
-        updateFrameInformation();
+        //updateFrameInformation();
         
         SDL_Event event;
         while(SDL_PollEvent(&event) != 0) {
 
-            if(event.key.keysym.sym == SDLK_F12) {
-                std::cout << "FPS: " << framesPerSecond << std::endl;
+            //if(event.key.keysym.sym == SDLK_F12) {
+            //    std::cout << "FPS: " << framesPerSecond << std::endl;
+            //}
+            
+            if(event.type == SDL_QUIT) {
+                isGameRunning = false;
+                break;
             }
             
             switch(event.type) {
-                case SDL_QUIT: {
-                    isGameRunning = false;
-                    break;
-                }
-                default: {
+                case SDL_KEYUP:
+                case SDL_KEYDOWN: {
                     for(GameObject* gameObject : gameObjects) {
                         InputComponent* inputComponent = gameObject->getComponent<InputComponent>();
                         if(inputComponent != nullptr) {
@@ -57,8 +64,12 @@ void World::run() {
             }
         }
         
+        if(!isGameRunning) {
+            break;
+        }
+        
         for(GameObject* gameObject : gameObjects) {
-            movementSystem->process(gameObject);
+            movementSystem->process(*gameObject, gameObjects);
         }
         
         SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
@@ -66,9 +77,7 @@ void World::run() {
         for(GameObject* gameObject : gameObjects) {
             renderSystem->update(gameObject);
         }
-        
         renderPlayingField();
-        
         SDL_RenderPresent(&renderer);
     }
 }

@@ -25,7 +25,7 @@ private:
     RenderSystem* renderSystem = new RenderSystem(renderer);
     
     int framesPerSecond { 0 };
-    bool isGameRunning { false };
+    bool isGameRunning { true };
     void updateFrameInformation();
     void renderPlayingField() const;
 };

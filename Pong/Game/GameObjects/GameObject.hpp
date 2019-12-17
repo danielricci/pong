@@ -24,7 +24,7 @@ public:
     TransformComponent* getTransform() const;
 
 protected:
-    GameObject(int x = 0, int y = 0);
+    GameObject(int x = 0, int y = 0, int width = 0, int height = 0);
     
 private:
     std::list<Component*> components;

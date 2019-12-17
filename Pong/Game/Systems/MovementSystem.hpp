@@ -2,7 +2,9 @@
 
 #include "Game/GameObjects/GameObject.hpp"
 
+#include <list>
+
 class MovementSystem {
 public:
-    void process(GameObject* gameObject) const;
+    void process(GameObject& currentGameObject, const std::list<GameObject*>& gameObjects) const;
 };

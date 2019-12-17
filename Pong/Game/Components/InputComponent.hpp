@@ -25,10 +25,6 @@ public:
             }
         }
     }
-    
-    virtual Type identifier() const override {
-        return Component::Type::InputComponent;
-    }
 
     void registerActionBinding(const std::string& action, std::function<void(const SDL_Event&)> functor) {
         actionBindings[action] = functor;

@@ -2,6 +2,6 @@
 
 #include "Game/Components/Component.hpp"
 
-class RenderComponent : public Component {
+class CollisionComponent : public Component {
     // STUB COMPONENT
 };
