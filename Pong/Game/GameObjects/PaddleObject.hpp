@@ -8,10 +8,9 @@
 #include <SDL.h>
 
 class PaddleObject : public GameObject {
-
 public:
     inline static const int WIDTH { 6 };
-    inline static const int HEIGHT { 70 };
+    inline static const int HEIGHT { 100 };
 
     PaddleObject(int x, int y, SDL_Keycode moveUp, SDL_Keycode moveDown);
     ~PaddleObject() = default;

@@ -5,6 +5,12 @@
 
 #include <Eigen/Dense>
 #include <cmath>
+#include <iostream>
+#include <SDL.h>
+
+MovementSystem::MovementSystem(SDL_Window& window) {
+    SDL_GetWindowSize(&window, &worldWidth, &worldHeight);
+}
 
 void MovementSystem::process(GameObject& currentGameObject, const std::list<GameObject*>& gameObjects) const {
     PaddleInputComponent* paddleInputComponent = currentGameObject.getComponent<PaddleInputComponent>();
@@ -15,7 +21,9 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
             TransformComponent* transform = currentGameObject.getTransform();
             Eigen::Vector2f velocity = transform->velocity;
             velocity.y() = std::abs(velocity.y()) * direction;
-            if(velocity.y() + transform->position.y() >= 0) {
+            
+            int newPosition = velocity.y() + transform->position.y();
+            if(newPosition >= 0 && newPosition + transform->dimension.y() <= worldHeight) {
                 transform->velocity = velocity;
                 transform->applyVelocity();
             }
@@ -31,13 +39,39 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                 if(gameObject != ball) {
                     SDL_Rect gameObjectRect = gameObject->getTransform()->rectangle();
                     if(SDL_HasIntersection(&ballRect, &gameObjectRect)) {
-                        // TODO: Can we hug the object instead?
                         transformComponent->undoVelocity();
                         transformComponent->invertVelocityX();
+
+                        int sectors = 5;
+                        int sectorSize = gameObjectRect.h / sectors;
+                        int hitPosition = std::abs((transformComponent->position.y() + (transformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectorSize;
+                        std::cout << hitPosition << std::endl;
+                        
+                        switch(hitPosition + 1) {
+                            case 1:
+                                transformComponent->velocity.y() = -4;
+                            case 2:
+                                transformComponent->velocity.y() = -2;
+                                break;
+                            case 3:
+                                transformComponent->velocity.y() = 0;
+                                break;
+                            case 4:
+                                transformComponent->velocity.y() = 2;
+                                break;
+                            case 5:
+                                transformComponent->velocity.y() = 4;
+                                break;
+                        }
                         transformComponent->applyVelocity();
                         break;
                     }
                 }
+            }
+            
+            if(ballRect.y <= 0 || ballRect.y >= worldHeight) {
+                transformComponent->invertVelocityY();
+                transformComponent->applyVelocity();
             }
         }
     }

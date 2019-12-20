@@ -21,7 +21,7 @@ private:
     
     std::list<GameObject*> gameObjects;
 
-    MovementSystem* movementSystem = new MovementSystem();
+    MovementSystem* movementSystem = new MovementSystem(window);
     RenderSystem* renderSystem = new RenderSystem(renderer);
     
     int framesPerSecond { 0 };

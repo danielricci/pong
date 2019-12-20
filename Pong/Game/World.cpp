@@ -46,6 +46,11 @@ void World::run() {
             //    std::cout << "FPS: " << framesPerSecond << std::endl;
             //}
             
+//            if(event.key.keysym.sym == SDLK_F1 && event.type == SDL_KEYUP) {
+//                resetGame();
+//                break;
+//            }
+            
             if(event.type == SDL_QUIT) {
                 isGameRunning = false;
                 break;
