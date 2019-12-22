@@ -18,6 +18,7 @@
 		03B049A7239600E600D3E5B9 /* BallObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B049A6239600E600D3E5B9 /* BallObject.cpp */; };
 		03EBAAB0239190B400F8BDE5 /* MovementSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */; };
 		03EFD234237D004B006EF2A5 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EFD232237D004B006EF2A5 /* World.cpp */; };
+		03F9A10E23B019B400C93F4A /* libSDL_image.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F9A10D23B0199A00C93F4A /* libSDL_image.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +61,7 @@
 		03EFD233237D004B006EF2A5 /* World.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
 		03EFD237237E48D9006EF2A5 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		03F5F9272383172400653DBE /* Pong.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Pong.entitlements; sourceTree = "<group>"; };
+		03F9A10D23B0199A00C93F4A /* libSDL_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL_image.a; path = ../../../../../../../../usr/local/Cellar/sdl_image/1.2.12_7/lib/libSDL_image.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */,
+				03F9A10E23B019B400C93F4A /* libSDL_image.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +95,7 @@
 		0389AD7E2396F4CA005EEC22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03F9A10D23B0199A00C93F4A /* libSDL_image.a */,
 				0389AD7F2396F4CA005EEC22 /* libSDL2.a */,
 			);
 			name = Frameworks;
@@ -387,6 +391,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/lib/**",
 					/usr/local/Cellar/sdl2/2.0.10/lib,
+					/usr/local/Cellar/sdl_image/1.2.12_7/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -415,6 +420,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/lib/**",
 					/usr/local/Cellar/sdl2/2.0.10/lib,
+					/usr/local/Cellar/sdl_image/1.2.12_7/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
