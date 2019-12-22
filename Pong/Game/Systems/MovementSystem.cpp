@@ -15,7 +15,7 @@ MovementSystem::MovementSystem(SDL_Window& window) {
 void MovementSystem::process(GameObject& currentGameObject, const std::list<GameObject*>& gameObjects) {
     PaddleInputComponent* paddleInputComponent = currentGameObject.getComponent<PaddleInputComponent>();
     if(paddleInputComponent != nullptr) {
-        // TODO: Can't we simply just get the transform component and apply it to the direction AT THE SOURCE?
+        // FIXME: Can't we simply just get the transform component and apply it to the direction AT THE SOURCE?
         int direction = paddleInputComponent->getDirection();
         if(direction != 0) {
             TransformComponent* transform = currentGameObject.getTransform();
@@ -75,6 +75,9 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
             if(ballRect.y <= 0 || ballRect.y >= worldHeight) {
                 transformComponent->invertVelocityY();
                 transformComponent->applyVelocity();
+            }
+            else if(ballRect.x >= worldWidth || ballRect.x + ballRect.w <= 0) {
+                // TODO: condition for a point to occur       
             }
         }
     }
