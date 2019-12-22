@@ -12,7 +12,7 @@ MovementSystem::MovementSystem(SDL_Window& window) {
     SDL_GetWindowSize(&window, &worldWidth, &worldHeight);
 }
 
-void MovementSystem::process(GameObject& currentGameObject, const std::list<GameObject*>& gameObjects) const {
+void MovementSystem::process(GameObject& currentGameObject, const std::list<GameObject*>& gameObjects) {
     PaddleInputComponent* paddleInputComponent = currentGameObject.getComponent<PaddleInputComponent>();
     if(paddleInputComponent != nullptr) {
         // TODO: Can't we simply just get the transform component and apply it to the direction AT THE SOURCE?
@@ -42,11 +42,14 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                         transformComponent->undoVelocity();
                         transformComponent->invertVelocityX();
 
-                        int sectors = 5;
-                        int sectorSize = gameObjectRect.h / sectors;
+                        ++numBallCollisions;
+                        if(numBallCollisions % 5 == 0) {
+                            transformComponent->velocityMultiplier = std::min(maxVelocityIncreases, transformComponent->velocityMultiplier + 1);
+                        }
+                        
+                        int sectorSize = gameObjectRect.h / paddleSectors;
                         int hitPosition = std::abs((transformComponent->position.y() + (transformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectorSize;
                         std::cout << hitPosition << std::endl;
-                        
                         switch(hitPosition + 1) {
                             case 1:
                                 transformComponent->velocity.y() = -4;
