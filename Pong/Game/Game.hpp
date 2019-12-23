@@ -9,6 +9,8 @@ public:
     Game(const char* title, int width, int height);
     ~Game();
     void run();
+  
+    bool ready { false };
     
 private:
     SDL_Window* window { nullptr };
