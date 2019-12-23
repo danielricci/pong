@@ -4,4 +4,4 @@ I used Homebrew to install my dependencies.
 
 - eigen
 - sdl2
-- sdl_image
+- sdl2_ttf
