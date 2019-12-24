@@ -11,6 +11,8 @@
 		032C4B4F236EFFB500B78C94 /* PaddleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */; };
 		0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 0350F2B123A324FB0038A52E /* CollisionComponent.hpp */; };
 		035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* GameObject.cpp */; };
+		036CC4A223B26234006007C9 /* ScoreObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A023B26233006007C9 /* ScoreObject.cpp */; };
+		036CC4A523B26540006007C9 /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A323B26540006007C9 /* TextComponent.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
 		03987B5923955A110004639E /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B5823955A110004639E /* RenderSystem.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
@@ -44,6 +46,10 @@
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
+		036CC4A023B26233006007C9 /* ScoreObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreObject.cpp; sourceTree = "<group>"; };
+		036CC4A123B26234006007C9 /* ScoreObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreObject.hpp; sourceTree = "<group>"; };
+		036CC4A323B26540006007C9 /* TextComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextComponent.cpp; sourceTree = "<group>"; };
+		036CC4A423B26540006007C9 /* TextComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextComponent.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
 		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
@@ -161,6 +167,8 @@
 		03EFD235237E48BA006EF2A5 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				036CC4A023B26233006007C9 /* ScoreObject.cpp */,
+				036CC4A123B26234006007C9 /* ScoreObject.hpp */,
 				03B049A6239600E600D3E5B9 /* BallObject.cpp */,
 				03B049A5239600E500D3E5B9 /* BallObject.hpp */,
 				03EFD237237E48D9006EF2A5 /* GameObject.hpp */,
@@ -181,6 +189,8 @@
 				03A1E57F238F56E900A02AB7 /* PaddleInputComponent.hpp */,
 				03987B54239559A60004639E /* RenderComponent.hpp */,
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
+				036CC4A323B26540006007C9 /* TextComponent.cpp */,
+				036CC4A423B26540006007C9 /* TextComponent.hpp */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -270,10 +280,12 @@
 				035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */,
 				03B049A7239600E600D3E5B9 /* BallObject.cpp in Sources */,
 				03EBAAB0239190B400F8BDE5 /* MovementSystem.cpp in Sources */,
+				036CC4A523B26540006007C9 /* TextComponent.cpp in Sources */,
 				032C4B4F236EFFB500B78C94 /* PaddleObject.cpp in Sources */,
 				03EFD234237D004B006EF2A5 /* World.cpp in Sources */,
 				0322201B2380FF9D004B0BD1 /* Game.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
+				036CC4A223B26234006007C9 /* ScoreObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +421,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/lib/**",
 					/usr/local/Cellar/sdl2/2.0.10/lib,
-					/usr/local/Cellar/sdl_image/1.2.12_7/lib,
 					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,7 +450,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/lib/**",
 					/usr/local/Cellar/sdl2/2.0.10/lib,
-					/usr/local/Cellar/sdl_image/1.2.12_7/lib,
 					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

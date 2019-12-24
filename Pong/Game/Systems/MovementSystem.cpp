@@ -43,7 +43,7 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                         transformComponent->invertVelocityX();
 
                         ++numBallCollisions;
-                        if(numBallCollisions % 5 == 0) {
+                        if(numBallCollisions % 7 == 0) {
                             transformComponent->velocityMultiplier = std::min(maxVelocityIncreases, transformComponent->velocityMultiplier + 1);
                         }
                         
