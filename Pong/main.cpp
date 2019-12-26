@@ -7,8 +7,3 @@ int main(int argc, char** argv) {
     }
     delete game;
 }
-
-/*
- else {
-     TTF_Font* font = TTF_OpenFont("Resources/Fonts/Verdana.ttf", 16);
- */

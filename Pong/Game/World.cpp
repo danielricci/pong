@@ -1,5 +1,6 @@
 #include "Game/GameObjects/BallObject.hpp"
 #include "Game/GameObjects/PaddleObject.hpp"
+#include "Game/GameObjects/ScoreObject.hpp"
 #include "Game/World.hpp"
 
 #include <iostream>
@@ -15,7 +16,13 @@ renderer(renderer) {
     // Setup the Paddles
     gameObjects.push_front(new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_a, SDLK_z));
     gameObjects.push_front(new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_j, SDLK_m));
+    
+    // Setup the Ball
     gameObjects.push_front(new BallObject((windowWidth/2) - (BallObject::WIDTH/2), (windowHeight/2) - (BallObject::HEIGHT/2)));
+    
+    // Setup the Scores
+    gameObjects.push_front(new ScoreObject(100, 100));
+    
 }
 
 World::~World() {
