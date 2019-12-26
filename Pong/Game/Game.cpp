@@ -22,7 +22,6 @@ Game::Game(const char* title, int width, int height) {
             else {
                 SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
                 std::cout << "Initialization Successful" << std::endl;
-                world = new World(*window, *renderer);
                 
                 if(TTF_Init() < 0) {
                     std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
@@ -30,6 +29,9 @@ Game::Game(const char* title, int width, int height) {
                 else {
                     ready = true;
                 }
+                
+                // Initialize the world and it's contents
+                world = new World(*window, *renderer);
             }
         }
     }
