@@ -42,11 +42,6 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                     if(SDL_HasIntersection(&ballRect, &gameObjectRect)) {
                         transformComponent->undoVelocity();
                         transformComponent->invertVelocityX();
-
-                        ++numBallCollisions;
-                        if(numBallCollisions % 7 == 0) {
-                            transformComponent->velocityMultiplier = std::min(maxVelocityIncreases, transformComponent->velocityMultiplier + 1);
-                        }
                         
                         int sectorSize = gameObjectRect.h / paddleSectors;
                         int hitPosition = std::abs((transformComponent->position.y() + (transformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectorSize;

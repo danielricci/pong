@@ -11,13 +11,14 @@ public:
     virtual ~GameObject();
 
     template<typename T> T* getComponent() const {
+        T* myComponent { nullptr };
         for(Component* component : components) {
-            T* myComponent = dynamic_cast<T*>(component);
+            myComponent = component->getComponent<T>();
             if(myComponent != nullptr) {
-                return myComponent;
+                break;
             }
         }
-        return nullptr;
+        return myComponent;
     }
     
     Component* addComponent(Component* component);

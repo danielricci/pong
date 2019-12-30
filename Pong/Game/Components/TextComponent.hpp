@@ -12,6 +12,7 @@ public:
     ~TextComponent();
     
     void setText(const std::string& text);
+    SDL_Surface* getSurface() const { return surface; }
 private:    
     TTF_Font* font { nullptr };
     

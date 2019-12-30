@@ -13,7 +13,5 @@ private:
     int worldWidth;
     int worldHeight;
     
-    const int maxVelocityIncreases { 3 };
     const int paddleSectors { 5 };
-    int numBallCollisions { 0 };
 };

@@ -17,10 +17,10 @@ public:
     }
         
     void applyVelocity() {
-        this->position += (velocity * velocityMultiplier);
+        this->position += velocity;
     }
     void undoVelocity() {
-        this->position -= (velocity * velocityMultiplier);
+        this->position -= velocity;
     }
     
     void invertVelocityX() {
@@ -44,6 +44,4 @@ public:
     Eigen::Vector2f position { 0, 0 };
     Eigen::Vector2f velocity { 0, 0 };
     Eigen::Vector2f dimension { 0, 0 };
-    
-    int velocityMultiplier { 1 };
 };
