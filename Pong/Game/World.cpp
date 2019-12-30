@@ -21,8 +21,8 @@ renderer(renderer) {
     gameObjects.push_front(new BallObject((windowWidth/2) - (BallObject::WIDTH/2), (windowHeight/2) - (BallObject::HEIGHT/2)));
     
     // Setup the Scores
-    gameObjects.push_front(new ScoreObject(100, 100));
-    
+    gameObjects.push_front(new ScoreObject((windowWidth/2) - 50, 30));
+    gameObjects.push_front(new ScoreObject((windowWidth/2) + 30, 30));
 }
 
 World::~World() {
@@ -44,19 +44,14 @@ void World::run() {
     
     while(true) {
         
-        //updateFrameInformation();
+        updateFrameInformation();
         
         SDL_Event event;
         while(SDL_PollEvent(&event) != 0) {
 
-            //if(event.key.keysym.sym == SDLK_F12) {
-            //    std::cout << "FPS: " << framesPerSecond << std::endl;
-            //}
-            
-//            if(event.key.keysym.sym == SDLK_F1 && event.type == SDL_KEYUP) {
-//                resetGame();
-//                break;
-//            }
+            if(event.key.keysym.sym == SDLK_F12) {
+                std::cout << "FPS: " << framesPerSecond << std::endl;
+            }
             
             if(event.type == SDL_QUIT) {
                 isGameRunning = false;

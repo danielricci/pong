@@ -27,24 +27,25 @@ Game::Game(const char* title, int width, int height) {
                     std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
                 }
                 else {
+                    world = new World(*window, *renderer);
                     ready = true;
                 }
-                
-                // Initialize the world and it's contents
-                world = new World(*window, *renderer);
             }
         }
     }
 }
 
 Game::~Game() {
+    if(world != nullptr) {
+        delete world;
+        world = nullptr;
+    }
+
+    TTF_Quit();
+    
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    
-    TTF_Quit();
-    
-    delete world;
 }
 
 void Game::run() {

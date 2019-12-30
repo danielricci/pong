@@ -1,3 +1,4 @@
+#include "Game/Components/CollisionComponent.hpp"
 #include "Game/Components/PaddleInputComponent.hpp"
 #include "Game/Components/TransformComponent.hpp"
 #include "Game/GameObjects/BallObject.hpp"
@@ -36,7 +37,7 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
             transformComponent->applyVelocity();
             SDL_Rect ballRect = ball->getTransform()->rectangle();
             for(GameObject* gameObject : gameObjects) {
-                if(gameObject != ball) {
+                if(gameObject != ball && gameObject->getComponent<CollisionComponent>() != nullptr) {
                     SDL_Rect gameObjectRect = gameObject->getTransform()->rectangle();
                     if(SDL_HasIntersection(&ballRect, &gameObjectRect)) {
                         transformComponent->undoVelocity();

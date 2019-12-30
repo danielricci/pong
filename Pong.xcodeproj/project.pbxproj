@@ -13,6 +13,7 @@
 		035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035DB9DF238B75D90025B2F7 /* GameObject.cpp */; };
 		036CC4A223B26234006007C9 /* ScoreObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A023B26233006007C9 /* ScoreObject.cpp */; };
 		036CC4A523B26540006007C9 /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A323B26540006007C9 /* TextComponent.cpp */; };
+		03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
 		03987B5923955A110004639E /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B5823955A110004639E /* RenderSystem.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
@@ -51,6 +52,8 @@
 		036CC4A323B26540006007C9 /* TextComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextComponent.cpp; sourceTree = "<group>"; };
 		036CC4A423B26540006007C9 /* TextComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextComponent.hpp; sourceTree = "<group>"; };
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderComponent.cpp; sourceTree = "<group>"; };
+		03775CB023B6569400BFA1C6 /* TextRenderComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextRenderComponent.hpp; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
 		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
 		03987B5723955A110004639E /* RenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderSystem.hpp; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
 				036CC4A323B26540006007C9 /* TextComponent.cpp */,
 				036CC4A423B26540006007C9 /* TextComponent.hpp */,
+				03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */,
+				03775CB023B6569400BFA1C6 /* TextRenderComponent.hpp */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */,
+				03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
 				03987B5923955A110004639E /* RenderSystem.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */,
