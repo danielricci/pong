@@ -30,7 +30,7 @@ public:
     void invertVelocityY() {
         this->velocity.y() *= -1;
     }
-    
+        
     SDL_Rect rectangle() const {
         SDL_Rect rectangle;
         rectangle.x = position(0);

@@ -73,7 +73,14 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                 transformComponent->applyVelocity();
             }
             else if(ballRect.x >= worldWidth || ballRect.x + ballRect.w <= 0) {
-                // TODO: condition for a point to occur       
+                // Award the point to the player that scored
+                
+                
+                // Move the ball back at the center of the board in the direction of the player that lost the point
+                transformComponent->position.x() = worldWidth/2 - ballRect.w/2;
+                transformComponent->position.y() = worldHeight/2 - ballRect.h/2;
+                transformComponent->velocity.x() = BallObject::INITIAL_VELOCITY_X;
+                transformComponent->velocity.y() = BallObject::INITIAL_VELOCITY_Y;
             }
         }
     }

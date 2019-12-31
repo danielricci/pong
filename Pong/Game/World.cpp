@@ -79,6 +79,10 @@ void World::run() {
             movementSystem->process(*gameObject, gameObjects);
         }
         
+        // TODO: Finish with a lambda expression that will go through and find the specified type
+        //std::find_if(gameObjects.begin(), gameObjects.end(), )
+        // send to the system manager
+        
         SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(&renderer);
         for(GameObject* gameObject : gameObjects) {
