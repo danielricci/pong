@@ -9,8 +9,9 @@ public:
     TextRenderComponent(SDL_Renderer& renderer);
     ~TextRenderComponent();
     
-    void setTexture(SDL_Surface& surface);
     SDL_Texture* getTexture() const { return texture; }
+    void createTexture(SDL_Surface& surface);
+    
 private:
     SDL_Texture* texture { nullptr };
     SDL_Renderer& renderer;

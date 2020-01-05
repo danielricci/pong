@@ -13,10 +13,6 @@ void RenderSystem::update(GameObject* gameObject) {
             TextComponent* textComponent = gameObject->getComponent<TextComponent>();
             TextRenderComponent* textRenderComponent = gameObject->getComponent<TextRenderComponent>();
             if (textComponent != nullptr && textRenderComponent != nullptr) {
-                if(textRenderComponent->getTexture() == nullptr) {
-                    SDL_Surface* surface = textComponent->getSurface();
-                    textRenderComponent->setTexture(*surface);
-                }
                 SDL_Rect rectangle = gameObject->getTransform()->rectangle();
                 SDL_QueryTexture(textRenderComponent->getTexture(), nullptr, nullptr, &rectangle.w, &rectangle.h);
                 SDL_RenderCopy(&renderer, textRenderComponent->getTexture(), nullptr, &rectangle);

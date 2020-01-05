@@ -2,13 +2,13 @@
 
 #include <iostream>
 
-TextComponent::TextComponent(std::string text, int size) {
+TextComponent::TextComponent(int size) {
     font = TTF_OpenFont(fontPath, size);
     if(font == nullptr) {
         std::cerr << "Could not open the specified font: " << text << std::endl;
     }
     else {
-        setText(text);
+        createSurface();
     }
 }
 
@@ -23,15 +23,19 @@ TextComponent::~TextComponent() {
     }
 }
 
+void TextComponent::createSurface() {
+    if(surface != nullptr) {
+        SDL_FreeSurface(surface);
+    }
+    surface = TTF_RenderText_Blended(font, text.c_str(), color);
+}
+
 void TextComponent::setText(const std::string& text) {
     if(this->font == nullptr) {
         std::cerr << "Font is invalid, cannot set the specified text" << std::endl;
     }
-    else if(this->text != text) {
+    else if(surface == nullptr || this->text != text) {
         this->text = text;
-        if(surface != nullptr) {
-            SDL_FreeSurface(surface);
-        }
-        surface = TTF_RenderText_Blended(font, text.c_str(), color);
+        createSurface();
     }
 }

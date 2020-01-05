@@ -8,15 +8,18 @@
 
 class TextComponent : public Component {
 public:
-    TextComponent(std::string text, int size);
+    TextComponent(int size);
     ~TextComponent();
     
+    std::string getText() const { return text; }
     void setText(const std::string& text);
+    
     SDL_Surface* getSurface() const { return surface; }
 private:    
+    void createSurface();
+    
     TTF_Font* font { nullptr };
     
-    // TODO: Should the surface be put within the TextRenderComponent instead?
     SDL_Surface* surface { nullptr };
     SDL_Color color { 255, 255, 255 };
     

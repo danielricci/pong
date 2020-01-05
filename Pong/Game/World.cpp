@@ -9,20 +9,27 @@ World::World(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
     
+    // Get the world dimensions
     int windowWidth { 0 };
     int windowHeight { 0 };
     SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
     
     // Setup the Paddles
-    gameObjects.push_front(new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_a, SDLK_z));
-    gameObjects.push_front(new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_j, SDLK_m));
+    PaddleObject* paddle1 = new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_a, SDLK_z);
+    gameObjects.push_front(paddle1);
+    PaddleObject* paddle2 = new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_j, SDLK_m);
+    gameObjects.push_front(paddle2);
     
     // Setup the Ball
     gameObjects.push_front(new BallObject((windowWidth/2) - (BallObject::WIDTH/2), (windowHeight/2) - (BallObject::HEIGHT/2)));
     
-    // Setup the Scores
-    gameObjects.push_front(new ScoreObject((windowWidth/2) - 50, 30, renderer));
-    gameObjects.push_front(new ScoreObject((windowWidth/2) + 30, 30, renderer));
+    // Setup the Score
+    ScoreObject* scoreObject1 = new ScoreObject((windowWidth/2) - 50, 30, renderer);
+    scoreObject1->setPaddleObject(*paddle1);
+    gameObjects.push_front(scoreObject1);
+    ScoreObject* scoreObject2 = new ScoreObject((windowWidth/2) + 30, 30, renderer);
+    scoreObject2->setPaddleObject(*paddle2);
+    gameObjects.push_front(scoreObject2);
 }
 
 World::~World() {
@@ -33,6 +40,7 @@ World::~World() {
     
     delete movementSystem;
     delete renderSystem;
+    delete scoringSystem;
 }
 
 void World::run() {
@@ -49,15 +57,18 @@ void World::run() {
         SDL_Event event;
         while(SDL_PollEvent(&event) != 0) {
 
+            // Display the frames per second
             if(event.key.keysym.sym == SDLK_F12) {
                 std::cout << "FPS: " << framesPerSecond << std::endl;
             }
             
+            // Set the flag if the game quit has occurred
             if(event.type == SDL_QUIT) {
                 isGameRunning = false;
                 break;
             }
             
+            // Go through the input type for the keyboard
             switch(event.type) {
                 case SDL_KEYUP:
                 case SDL_KEYDOWN: {
@@ -71,24 +82,32 @@ void World::run() {
             }
         }
         
+        // Verify if the game should quit based on previous user input
         if(!isGameRunning) {
             break;
         }
-        
+
+        // Movement System
         for(GameObject* gameObject : gameObjects) {
             movementSystem->process(*gameObject, gameObjects);
         }
         
-        // TODO: Finish with a lambda expression that will go through and find the specified type
-        //std::find_if(gameObjects.begin(), gameObjects.end(), )
-        // send to the system manager
-        
+        // Scoring System
+        scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
+
+        // Set up for rendering
         SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(&renderer);
+        
+        // Render System
         for(GameObject* gameObject : gameObjects) {
             renderSystem->update(gameObject);
         }
+        
+        // Render the playing field
         renderPlayingField();
+        
+        // Blit everything
         SDL_RenderPresent(&renderer);
     }
 }
