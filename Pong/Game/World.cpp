@@ -56,19 +56,25 @@ void World::run() {
         
         SDL_Event event;
         while(SDL_PollEvent(&event) != 0) {
-
-            // Display the frames per second
-            if(event.key.keysym.sym == SDLK_F12) {
-                std::cout << "FPS: " << framesPerSecond << std::endl;
-            }
-            
-            // Set the flag if the game quit has occurred
             if(event.type == SDL_QUIT) {
                 isGameRunning = false;
                 break;
             }
+            else if(event.type == SDL_WINDOWEVENT) {
+                switch(event.window.event) {
+                    case SDL_WINDOWEVENT_FOCUS_GAINED:
+                        isGamefocused = false;
+                        break;
+                    case SDL_WINDOWEVENT_FOCUS_LOST:
+                        isGamefocused = true;
+                        break;
+                }
+            }
+
+            if(event.key.keysym.sym == SDLK_F12) {
+                std::cout << "FPS: " << framesPerSecond << std::endl;
+            }
             
-            // Go through the input type for the keyboard
             switch(event.type) {
                 case SDL_KEYUP:
                 case SDL_KEYDOWN: {
@@ -86,15 +92,15 @@ void World::run() {
         if(!isGameRunning) {
             break;
         }
-
-        // Movement System
-        for(GameObject* gameObject : gameObjects) {
-            movementSystem->process(*gameObject, gameObjects);
+        
+        // If the game has lost focus then do not update the movement of the game
+        if(!isGamefocused) {
+            for(GameObject* gameObject : gameObjects) {
+                movementSystem->process(*gameObject, gameObjects);
+            }
+            scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
         }
         
-        // Scoring System
-        scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
-
         // Set up for rendering
         SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(&renderer);

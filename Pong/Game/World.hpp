@@ -28,7 +28,8 @@ private:
     
     int framesPerSecond { 0 };
     bool isGameRunning { true };
-    
+    bool isGamefocused = false;
+
     void updateFrameInformation();
     void renderPlayingField() const;
     
