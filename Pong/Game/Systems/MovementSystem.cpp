@@ -5,9 +5,10 @@
 #include "Game/Systems/MovementSystem.hpp"
 
 #include <Eigen/Dense>
+#include <SDL.h>
+
 #include <cmath>
 #include <iostream>
-#include <SDL.h>
 
 MovementSystem::MovementSystem(SDL_Window& window) {
     SDL_GetWindowSize(&window, &worldWidth, &worldHeight);
@@ -33,49 +34,57 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
     else {
         BallObject* ball = dynamic_cast<BallObject*>(&currentGameObject);
         if(ball != nullptr) {
-            TransformComponent* transformComponent = ball->getTransform();
-            if(transformComponent->position.y() <= 0 || transformComponent->position.y() + transformComponent->dimension.y() >= worldHeight) {
-                transformComponent->invertVelocityY();
-                transformComponent->applyVelocity();
+            TransformComponent* ballTransformComponent = ball->getTransform();
+            if(ballTransformComponent->position.y() <= 0 || ballTransformComponent->position.y() + ballTransformComponent->dimension.y() >= worldHeight) {
+                ballTransformComponent->invertVelocityY();
+                ballTransformComponent->applyVelocity();
             }
-            else if(transformComponent->position.x() <= 0 || transformComponent->position.x() + transformComponent->dimension.x() >= worldWidth) {
+            else if(ballTransformComponent->position.x() <= 0 || ballTransformComponent->position.x() + ballTransformComponent->dimension.x() >= worldWidth) {
                 // Position the ball at the center of the arena
                 // The direction of the ball should point towards the player that lost the point
-                transformComponent->position.x() = worldWidth/2 - (transformComponent->dimension.x() / 2);
-                transformComponent->position.y() = worldHeight/2 - (transformComponent->dimension.y() / 2);
-                transformComponent->velocity.x() = BallObject::INITIAL_VELOCITY_X * (transformComponent->velocity.x() < 0 ? -1 : 1);
-                transformComponent->velocity.y() = BallObject::INITIAL_VELOCITY_Y;
+                ballTransformComponent->position.x() = worldWidth/2 - (ballTransformComponent->dimension.x() / 2);
+                ballTransformComponent->position.y() = worldHeight/2 - (ballTransformComponent->dimension.y() / 2);
+                ballTransformComponent->velocity.x() = BallObject::INITIAL_VELOCITY_X * (ballTransformComponent->velocity.x() < 0 ? -1 : 1);
+                ballTransformComponent->velocity.y() = BallObject::INITIAL_VELOCITY_Y;
             }
             else {
-                transformComponent->applyVelocity();
+                ballTransformComponent->applyVelocity();
                 SDL_Rect ballRect = ball->getTransform()->rectangle();
                 for(GameObject* gameObject : gameObjects) {
                     if(gameObject != ball && gameObject->getComponent<CollisionComponent>() != nullptr) {
                         SDL_Rect gameObjectRect = gameObject->getTransform()->rectangle();
                         if(SDL_HasIntersection(&ballRect, &gameObjectRect)) {
-                            transformComponent->undoVelocity();
-                            transformComponent->invertVelocityX();
+                            ballTransformComponent->undoVelocity();
+                            ballTransformComponent->invertVelocityX();
                             
-                            int sectorSize = gameObjectRect.h / paddleSectors;
-                            int hitPosition = std::abs((transformComponent->position.y() + (transformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectorSize;
-                            std::cout << hitPosition << std::endl;
-                            switch(hitPosition + 1) {
+                            // Calculate the position of where the ball hit the paddle
+                            int sectionSize = gameObjectRect.h / PADDLE_SECTIONS;
+                            int hitPosition = std::abs((ballTransformComponent->position.y() + (ballTransformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectionSize;
+                            
+                            // Note: Only an upper-limit is required. If the absolute value is no longer used to determine the hit position
+                            //       then a proper lower-limit clamp will be required.
+                            hitPosition = std::min(hitPosition, PADDLE_SECTIONS - 1);
+                            
+                            switch(hitPosition) {
+                                case 0:
+                                    ballTransformComponent->velocity.y() = -4;
                                 case 1:
-                                    transformComponent->velocity.y() = -4;
+                                    ballTransformComponent->velocity.y() = -2;
+                                    break;
                                 case 2:
-                                    transformComponent->velocity.y() = -2;
+                                    ballTransformComponent->velocity.y() = 0;
                                     break;
                                 case 3:
-                                    transformComponent->velocity.y() = 0;
+                                    ballTransformComponent->velocity.y() = 2;
                                     break;
                                 case 4:
-                                    transformComponent->velocity.y() = 2;
+                                    ballTransformComponent->velocity.y() = 4;
                                     break;
-                                case 5:
-                                    transformComponent->velocity.y() = 4;
+                                default:
+                                    std::cerr << "Could not calculate hit position for " << hitPosition << std::endl;
                                     break;
                             }
-                            transformComponent->applyVelocity();
+                            ballTransformComponent->applyVelocity();
                             break;
                         }
                     }

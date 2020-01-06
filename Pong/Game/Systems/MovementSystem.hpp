@@ -13,5 +13,5 @@ private:
     int worldWidth;
     int worldHeight;
     
-    const int paddleSectors { 5 };
+    const int PADDLE_SECTIONS { 5 };
 };
