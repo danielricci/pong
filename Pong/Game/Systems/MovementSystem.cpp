@@ -53,7 +53,7 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                 for(GameObject* gameObject : gameObjects) {
                     if(gameObject != ball && gameObject->getComponent<CollisionComponent>() != nullptr) {
                         SDL_Rect gameObjectRect = gameObject->getTransform()->rectangle();
-                        if(SDL_HasIntersection(&ballRect, &gameObjectRect)) {
+                        if(gameObject->getComponent<CollisionComponent>()->isCollidedAABB(ballRect, gameObjectRect)) {
                             ballTransformComponent->undoVelocity();
                             ballTransformComponent->invertVelocityX();
                             
