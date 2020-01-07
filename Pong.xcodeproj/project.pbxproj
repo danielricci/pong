@@ -16,6 +16,7 @@
 		036CC4A523B26540006007C9 /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A323B26540006007C9 /* TextComponent.cpp */; };
 		03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
+		038E2E8A23C40D3F00A4BB41 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 038E2E8923C40D3F00A4BB41 /* libSDL2_mixer.a */; };
 		03987B5923955A110004639E /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B5823955A110004639E /* RenderSystem.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */; };
@@ -58,6 +59,7 @@
 		03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderComponent.cpp; sourceTree = "<group>"; };
 		03775CB023B6569400BFA1C6 /* TextRenderComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextRenderComponent.hpp; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
+		038E2E8923C40D3F00A4BB41 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
 		03987B5723955A110004639E /* RenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderSystem.hpp; sourceTree = "<group>"; };
 		03987B5823955A110004639E /* RenderSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderSystem.cpp; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			files = (
 				0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */,
 				03EDC3DA23B100A5000A1AD9 /* libSDL2_ttf.a in Frameworks */,
+				038E2E8A23C40D3F00A4BB41 /* libSDL2_mixer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +111,7 @@
 		0389AD7E2396F4CA005EEC22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				038E2E8923C40D3F00A4BB41 /* libSDL2_mixer.a */,
 				03EDC3D923B1009B000A1AD9 /* libSDL2_ttf.a */,
 				0389AD7F2396F4CA005EEC22 /* libSDL2.a */,
 			);
@@ -434,6 +438,7 @@
 					"/usr/local/lib/**",
 					/usr/local/Cellar/sdl2/2.0.10/lib,
 					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
+					/usr/local/Cellar/sdl2_mixer/2.0.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -463,6 +468,7 @@
 					"/usr/local/lib/**",
 					/usr/local/Cellar/sdl2/2.0.10/lib,
 					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
+					/usr/local/Cellar/sdl2_mixer/2.0.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

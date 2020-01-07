@@ -19,7 +19,9 @@ void ScoringSystem::process(BallObject* ballObject, const std::list<ScoreObject*
                     farthestScoreObject = scoreObject;
                 }
             }
-            farthestScoreObject->setScore(farthestScoreObject->getScore() + 1);
+            if(farthestScoreObject != nullptr) {
+                farthestScoreObject->setScore(farthestScoreObject->getScore() + 1);
+            }
         }
     }
 }
