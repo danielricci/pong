@@ -1,11 +1,11 @@
 #include "Game/GameObjects/BallObject.hpp"
 #include "Game/GameObjects/PaddleObject.hpp"
 #include "Game/GameObjects/ScoreObject.hpp"
-#include "Game/World.hpp"
+#include "Game/GameWorld.hpp"
 
 #include <iostream>
 
-World::World(SDL_Window& window, SDL_Renderer& renderer) :
+GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
     
@@ -32,7 +32,7 @@ renderer(renderer) {
     gameObjects.push_front(scoreObject2);
 }
 
-World::~World() {
+GameWorld::~GameWorld() {
     
     for(GameObject* gameObject : gameObjects) {
         delete gameObject;
@@ -43,7 +43,7 @@ World::~World() {
     delete scoringSystem;
 }
 
-void World::run() {
+void GameWorld::run() {
     
     // Initial clearing of the screen before proceeding
     SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
@@ -118,7 +118,7 @@ void World::run() {
     }
 }
 
-void World::renderPlayingField() const {
+void GameWorld::renderPlayingField() const {
     int windowWidth { 0 };
     int windowHeight { 0 };
     SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
@@ -133,7 +133,7 @@ void World::renderPlayingField() const {
     }
 }
 
-void World::updateFrameInformation() {
+void GameWorld::updateFrameInformation() {
 
     // Initialization of data
     static int totalFrames = 0;

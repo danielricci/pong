@@ -10,10 +10,10 @@
 
 #include <list>
 
-class World {
+class GameWorld {
 public:
-    World(SDL_Window& window, SDL_Renderer& renderer);
-    ~World();
+    GameWorld(SDL_Window& window, SDL_Renderer& renderer);
+    ~GameWorld();
     void run();
 private:
 

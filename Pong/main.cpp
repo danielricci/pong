@@ -1,9 +1,7 @@
-#include "Game/Game.hpp"
+#include "Game/GameWindow.hpp"
 
 int main(int argc, char** argv) {
-    Game* game = new Game("Pong", 640, 480);
-    if(game->ready) {
-        game->run();
-    }
+    GameWindow* game = new GameWindow("Pong", 640, 480);
+    game->show();
     delete game;
 }
