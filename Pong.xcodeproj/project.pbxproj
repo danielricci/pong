@@ -15,6 +15,7 @@
 		036CC4A223B26234006007C9 /* ScoreObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A023B26233006007C9 /* ScoreObject.cpp */; };
 		036CC4A523B26540006007C9 /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036CC4A323B26540006007C9 /* TextComponent.cpp */; };
 		03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */; };
+		037BF8F923CAC40B00D7C4B3 /* SoundComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037BF8F723CAC40B00D7C4B3 /* SoundComponent.cpp */; };
 		0389AD802396F4CA005EEC22 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0389AD7F2396F4CA005EEC22 /* libSDL2.a */; };
 		038E2E8A23C40D3F00A4BB41 /* libSDL2_mixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 038E2E8923C40D3F00A4BB41 /* libSDL2_mixer.a */; };
 		03987B5923955A110004639E /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B5823955A110004639E /* RenderSystem.cpp */; };
@@ -48,7 +49,7 @@
 		0345100923BAF56500530E54 /* ScoringSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoringSystem.cpp; sourceTree = "<group>"; };
 		0345100A23BAF56500530E54 /* ScoringSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScoringSystem.hpp; sourceTree = "<group>"; };
 		0350441623C5276A00CE0791 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		0350441723C5277300CE0791 /* miss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = miss.wav; sourceTree = "<group>"; };
+		0350441723C5277300CE0791 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		0350441823C5277300CE0791 /* wall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wall.wav; sourceTree = "<group>"; };
 		0350441923C5277300CE0791 /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit.wav; sourceTree = "<group>"; };
 		0350F2B123A324FB0038A52E /* CollisionComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionComponent.hpp; sourceTree = "<group>"; };
@@ -62,6 +63,8 @@
 		037280BD234F9A0D008472B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderComponent.cpp; sourceTree = "<group>"; };
 		03775CB023B6569400BFA1C6 /* TextRenderComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextRenderComponent.hpp; sourceTree = "<group>"; };
+		037BF8F723CAC40B00D7C4B3 /* SoundComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SoundComponent.cpp; sourceTree = "<group>"; };
+		037BF8F823CAC40B00D7C4B3 /* SoundComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SoundComponent.hpp; sourceTree = "<group>"; };
 		0389AD7F2396F4CA005EEC22 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../usr/local/Cellar/sdl2/2.0.10/lib/libSDL2.a; sourceTree = "<group>"; };
 		038E2E8923C40D3F00A4BB41 /* libSDL2_mixer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_mixer.a; path = ../../../../../../../../usr/local/Cellar/sdl2_mixer/2.0.4/lib/libSDL2_mixer.a; sourceTree = "<group>"; };
 		03987B54239559A60004639E /* RenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderComponent.hpp; sourceTree = "<group>"; };
@@ -117,7 +120,7 @@
 			children = (
 				0350441623C5276A00CE0791 /* LICENSE.txt */,
 				0350441923C5277300CE0791 /* hit.wav */,
-				0350441723C5277300CE0791 /* miss.wav */,
+				0350441723C5277300CE0791 /* score.wav */,
 				0350441823C5277300CE0791 /* wall.wav */,
 			);
 			path = Sounds;
@@ -221,6 +224,8 @@
 				036CC4A423B26540006007C9 /* TextComponent.hpp */,
 				03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */,
 				03775CB023B6569400BFA1C6 /* TextRenderComponent.hpp */,
+				037BF8F723CAC40B00D7C4B3 /* SoundComponent.cpp */,
+				037BF8F823CAC40B00D7C4B3 /* SoundComponent.hpp */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				0345100B23BAF56500530E54 /* ScoringSystem.cpp in Sources */,
 				03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */,
 				03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */,
+				037BF8F923CAC40B00D7C4B3 /* SoundComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
 				03987B5923955A110004639E /* RenderSystem.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */,

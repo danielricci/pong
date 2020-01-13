@@ -1,5 +1,6 @@
 #include "Game/Components/CollisionComponent.hpp"
 #include "Game/Components/PaddleInputComponent.hpp"
+#include "Game/Components/SoundComponent.hpp"
 #include "Game/Components/TransformComponent.hpp"
 #include "Game/GameObjects/BallObject.hpp"
 #include "Game/Systems/MovementSystem.hpp"
@@ -32,12 +33,15 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
         }
     }
     else {
-        BallObject* ball = dynamic_cast<BallObject*>(&currentGameObject);
-        if(ball != nullptr) {
-            TransformComponent* ballTransformComponent = ball->getTransform();
+        BallObject* ballObject = dynamic_cast<BallObject*>(&currentGameObject);
+        if(ballObject != nullptr) {
+            TransformComponent* ballTransformComponent = ballObject->getTransform();
             if(ballTransformComponent->position.y() <= 0 || ballTransformComponent->position.y() + ballTransformComponent->dimension.y() >= worldHeight) {
                 ballTransformComponent->invertVelocityY();
                 ballTransformComponent->applyVelocity();
+                
+                // Play the sound for hitting a wall
+                ballObject->playWallHitSound();
             }
             else if(ballTransformComponent->position.x() <= 0 || ballTransformComponent->position.x() + ballTransformComponent->dimension.x() >= worldWidth) {
                 // Position the ball at the center of the arena
@@ -49,9 +53,9 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
             }
             else {
                 ballTransformComponent->applyVelocity();
-                SDL_Rect ballRect = ball->getTransform()->rectangle();
+                SDL_Rect ballRect = ballObject->getTransform()->rectangle();
                 for(GameObject* gameObject : gameObjects) {
-                    if(gameObject != ball && gameObject->getComponent<CollisionComponent>() != nullptr) {
+                    if(gameObject != ballObject && gameObject->getComponent<CollisionComponent>() != nullptr) {
                         SDL_Rect gameObjectRect = gameObject->getTransform()->rectangle();
                         if(gameObject->getComponent<CollisionComponent>()->isCollidedAABB(ballRect, gameObjectRect)) {
                             ballTransformComponent->undoVelocity();
@@ -62,7 +66,7 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                             int hitPosition = std::abs((ballTransformComponent->position.y() + (ballTransformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectionSize;
                             
                             // Note: Only an upper-limit is required. If the absolute value is no longer used to determine the hit position
-                            //       then a proper lower-limit clamp will be required.
+                            //       then a proper lower-limit is required.
                             hitPosition = std::min(hitPosition, PADDLE_SECTIONS - 1);
                             
                             switch(hitPosition) {
@@ -85,6 +89,9 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                                     break;
                             }
                             ballTransformComponent->applyVelocity();
+
+                            // Play the sound for hitting a paddle
+                            ballObject->playPaddleHitSound();
                             break;
                         }
                     }

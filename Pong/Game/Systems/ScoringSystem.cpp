@@ -21,6 +21,7 @@ void ScoringSystem::process(BallObject* ballObject, const std::list<ScoreObject*
             }
             if(farthestScoreObject != nullptr) {
                 farthestScoreObject->setScore(farthestScoreObject->getScore() + 1);
+                ballObject->playScoreSound();
             }
         }
     }

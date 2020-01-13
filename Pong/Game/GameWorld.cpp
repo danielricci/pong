@@ -71,10 +71,6 @@ void GameWorld::run() {
                 }
             }
 
-            if(event.key.keysym.sym == SDLK_F12) {
-                std::cout << "FPS: " << framesPerSecond << std::endl;
-            }
-            
             switch(event.type) {
                 case SDL_KEYUP:
                 case SDL_KEYDOWN: {
