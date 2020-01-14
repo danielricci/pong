@@ -1,7 +1,10 @@
+#include "Game/Components/PaddleInputComponent.hpp"
 #include "Game/GameObjects/BallObject.hpp"
 #include "Game/GameObjects/PaddleObject.hpp"
 #include "Game/GameObjects/ScoreObject.hpp"
 #include "Game/GameWorld.hpp"
+
+#include <SDL.h>
 
 #include <iostream>
 
@@ -15,9 +18,12 @@ renderer(renderer) {
     SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
     
     // Setup the Paddles
-    PaddleObject* paddle1 = new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_a, SDLK_z);
+    PaddleObject* paddle1 = new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
+    paddle1->addComponent(new PaddleInputComponent(SDLK_a, SDLK_z));
     gameObjects.push_front(paddle1);
-    PaddleObject* paddle2 = new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2), SDLK_j, SDLK_m);
+    
+    PaddleObject* paddle2 = new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
+    paddle2->addComponent(new PaddleInputComponent(SDLK_j, SDLK_m));
     gameObjects.push_front(paddle2);
     
     // Setup the Ball

@@ -8,16 +8,15 @@
 
 class PaddleInputComponent : public InputComponent {
 public:
-    inline static const std::string ACTION_MOVE_UP = "MoveUp";
-    inline static const std::string ACTION_MOVE_DOWN = "MoveDown";
-    
-    PaddleInputComponent();
+    PaddleInputComponent(SDL_Keycode keyUp, SDL_Keycode keyDown);
     
     int getDirection() const {
         return direction;
     }
     
 private:
+    const std::string ACTION_MOVE_UP = "MoveUp";
+    const std::string ACTION_MOVE_DOWN = "MoveDown";
     
     int direction { 0 };
     

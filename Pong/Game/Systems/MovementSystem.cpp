@@ -72,6 +72,7 @@ void MovementSystem::process(GameObject& currentGameObject, const std::list<Game
                             switch(hitPosition) {
                                 case 0:
                                     ballTransformComponent->velocity.y() = -4;
+                                    break;
                                 case 1:
                                     ballTransformComponent->velocity.y() = -2;
                                     break;
