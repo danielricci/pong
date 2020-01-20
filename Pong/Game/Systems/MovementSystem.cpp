@@ -3,6 +3,7 @@
 #include "Game/Components/SoundComponent.hpp"
 #include "Game/Components/TransformComponent.hpp"
 #include "Game/GameObjects/BallObject.hpp"
+#include "Game/GameObjects/PaddleObject.hpp"
 #include "Game/Systems/MovementSystem.hpp"
 
 #include <Eigen/Dense>
@@ -16,9 +17,9 @@ MovementSystem::MovementSystem(SDL_Window& window) {
 }
 
 void MovementSystem::process(GameObject& currentGameObject, const std::list<GameObject*>& gameObjects) {
-    PaddleInputComponent* paddleInputComponent = currentGameObject.getComponent<PaddleInputComponent>();
-    if(paddleInputComponent != nullptr) {
-        // FIXME: Can't we simply just get the transform component and apply it to the direction AT THE SOURCE?
+    PaddleObject* paddleObject = dynamic_cast<PaddleObject*>(&currentGameObject);
+    if(paddleObject != nullptr) {
+        PaddleInputComponent* paddleInputComponent = paddleObject->getComponent<PaddleInputComponent>();
         int direction = paddleInputComponent->getDirection();
         if(direction != 0) {
             TransformComponent* transform = currentGameObject.getTransform();
