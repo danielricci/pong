@@ -13,7 +13,6 @@ public:
     MovementSystem(SDL_Window& window);
     void process(const std::list<GameObject*>& gameObjects);
 private:
-    void process(GameObject* gameObject) const;
     void processBallMovement(BallObject* ballObject) const;
     void processPaddleMovement(PaddleObject* paddleObject) const;
     

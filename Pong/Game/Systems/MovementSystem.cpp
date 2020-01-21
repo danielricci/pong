@@ -18,23 +18,19 @@ void MovementSystem::process(const std::list<GameObject*>& gameObjects) {
     this->gameObjects = gameObjects;
     for(GameObject* gameObject : gameObjects) {
         if(gameObject != nullptr) {
-            process(gameObject);
+            PaddleObject* paddleObject = dynamic_cast<PaddleObject*>(gameObject);
+            if(paddleObject != nullptr) {
+                processPaddleMovement(paddleObject);
+            }
+            else {
+                BallObject* ballObject = dynamic_cast<BallObject*>(gameObject);
+                if(ballObject) {
+                    processBallMovement(ballObject);
+                }
+           }
         }
     }
     this->gameObjects.empty();
-}
-
-void MovementSystem::process(GameObject* gameObject) const {
-    PaddleObject* paddleObject = dynamic_cast<PaddleObject*>(gameObject);
-    if(paddleObject != nullptr) {
-        processPaddleMovement(paddleObject);
-    }
-    else {
-        BallObject* ballObject = dynamic_cast<BallObject*>(gameObject);
-        if(ballObject) {
-            processBallMovement(ballObject);
-        }
-    }
 }
 
 void MovementSystem::processBallMovement(BallObject* ballObject) const {
