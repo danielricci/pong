@@ -97,9 +97,7 @@ void GameWorld::run() {
         
         // If the game has lost focus then do not update the movement of the game
         if(!isGamefocused) {
-            for(GameObject* gameObject : gameObjects) {
-                movementSystem->process(*gameObject, gameObjects);
-            }
+            movementSystem->process(gameObjects);
             scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
         }
         

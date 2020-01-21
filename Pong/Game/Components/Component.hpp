@@ -10,7 +10,6 @@ public:
         }
     }
     template<typename T> T* getComponent() {
-        // TODO: Iterate through all children, BFS, DFS??
         T* myComponent { dynamic_cast<T*>(this) };
         if(myComponent != nullptr) {
             for(Component* component : components) {
