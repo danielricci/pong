@@ -1,7 +1,5 @@
 #include "PaddleInputComponent.hpp"
 
-#include <iostream>
-
 PaddleInputComponent::PaddleInputComponent(SDL_Keycode keyUp, SDL_Keycode keyDown) {
     this->addBindings(keyUp, ACTION_MOVE_UP);
     this->addBindings(keyDown, ACTION_MOVE_DOWN);
@@ -17,11 +15,10 @@ void PaddleInputComponent::onMoveUp(const SDL_Event& event) {
             break;
         }
         case SDL_KEYUP: {
-            direction = 0;
-            break;
-        }
-        default: {
-            std::cerr << "Bad onMoveUp(SDL_Event&) event type detected: " << event.type << std::endl;
+            // FIXME: Can this be done better?
+            if(direction == -1) {
+                direction = 0;
+            }
             break;
         }
     }
@@ -34,11 +31,10 @@ void PaddleInputComponent::onMoveDown(const SDL_Event& event) {
             break;
         }
         case SDL_KEYUP: {
-            direction = 0;
-            break;
-        }
-        default: {
-            std::cerr << "Bad onMoveDown(SDL_Event&) event type detected: " << event.type << std::endl;
+            // FIXME: Can this be done better?
+            if(direction == 1) {
+                direction = 0;
+            }
             break;
         }
     }
