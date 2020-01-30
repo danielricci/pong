@@ -69,10 +69,10 @@ void GameWorld::run() {
             else if(event.type == SDL_WINDOWEVENT) {
                 switch(event.window.event) {
                     case SDL_WINDOWEVENT_FOCUS_GAINED:
-                        isGamefocused = false;
+                        isGamefocused = true;
                         break;
                     case SDL_WINDOWEVENT_FOCUS_LOST:
-                        isGamefocused = true;
+                        isGamefocused = false;
                         break;
                 }
             }
@@ -90,27 +90,29 @@ void GameWorld::run() {
             }
         }
         
-        // Verify if the game should quit based on previous user input
         if(!isGameRunning) {
             break;
         }
         
-        // If the game has lost focus then do not update the movement of the game
         if(!isGamefocused) {
-            movementSystem->process(gameObjects);
-            scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
+            continue;
         }
+
+        // Move the game objects
+        movementSystem->process(gameObjects);
         
-        // Set up for rendering
-        SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(&renderer);
+        // Scoring System
+        scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
+
         
         // Render System
+        SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+        SDL_RenderClear(&renderer);
         for(GameObject* gameObject : gameObjects) {
             renderSystem->update(gameObject);
         }
         
-        // Render the playing field
+        // Render the field
         renderPlayingField();
         
         // Blit everything
@@ -158,4 +160,6 @@ void GameWorld::updateFrameInformation() {
         totalTime = 0;
         totalFrames = 0;
     }
+    
+    //std::cout << "Elapsed Time = " << elapsedTime << " | " << "Time = " << totalTime << " | Frames = " << totalFrames << " | FPS = " << framesPerSecond << " | Performance Counter = " << SDL_GetPerformanceCounter() << " | Performance Frequency = " << SDL_GetPerformanceFrequency() << std::endl;
 }
