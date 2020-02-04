@@ -12,10 +12,10 @@ ScoringSystem::ScoringSystem(SDL_Window& window) {
 void ScoringSystem::process(BallObject* ballObject, const std::list<ScoreObject*>& scoreObjects) {
     if(ballObject != nullptr) {
         TransformComponent* ballTransformComponent { ballObject->getTransform() };
-        if(ballTransformComponent->position.x() <= 0 || ballTransformComponent->position.x() + ballTransformComponent->dimension.x() >= worldWidth) {
+        if(ballTransformComponent->positionVector.x() <= 0 || ballTransformComponent->positionVector.x() + ballTransformComponent->dimensionVector.x() >= worldWidth) {
             ScoreObject* farthestScoreObject { nullptr };
             for(ScoreObject* scoreObject : scoreObjects) {
-                if(farthestScoreObject == nullptr || std::abs(scoreObject->getPaddleObject()->getTransform()->position.x() - ballTransformComponent->position.x()) > std::abs(farthestScoreObject->getPaddleObject()->getTransform()->position.x() - ballTransformComponent->position.x())) {
+                if(farthestScoreObject == nullptr || std::abs(scoreObject->getPaddleObject()->getTransform()->positionVector.x() - ballTransformComponent->positionVector.x()) > std::abs(farthestScoreObject->getPaddleObject()->getTransform()->positionVector.x() - ballTransformComponent->positionVector.x())) {
                     farthestScoreObject = scoreObject;
                 }
             }

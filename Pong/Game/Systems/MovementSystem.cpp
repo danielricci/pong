@@ -36,20 +36,20 @@ void MovementSystem::process(const std::list<GameObject*>& gameObjects) {
 void MovementSystem::processBallMovement(BallObject* ballObject) const {
     if(ballObject != nullptr) {
         TransformComponent* ballTransformComponent = ballObject->getTransform();
-        if(ballTransformComponent->position.y() <= 0 || ballTransformComponent->position.y() + ballTransformComponent->dimension.y() >= worldHeight) {
+        if(ballTransformComponent->positionVector.y() <= 0 || ballTransformComponent->positionVector.y() + ballTransformComponent->dimensionVector.y() >= worldHeight) {
             ballTransformComponent->invertVelocityY();
             ballTransformComponent->applyVelocity();
             
             // Play the sound for hitting a wall
             ballObject->playWallHitSound();
         }
-        else if(ballTransformComponent->position.x() <= 0 || ballTransformComponent->position.x() + ballTransformComponent->dimension.x() >= worldWidth) {
+        else if(ballTransformComponent->positionVector.x() <= 0 || ballTransformComponent->positionVector.x() + ballTransformComponent->dimensionVector.x() >= worldWidth) {
             // Position the ball at the center of the arena
             // The direction of the ball should point towards the player that lost the point
-            ballTransformComponent->position.x() = worldWidth/2 - (ballTransformComponent->dimension.x() / 2);
-            ballTransformComponent->position.y() = worldHeight/2 - (ballTransformComponent->dimension.y() / 2);
-            ballTransformComponent->velocity.x() = BallObject::INITIAL_VELOCITY_X * (ballTransformComponent->velocity.x() < 0 ? -1 : 1);
-            ballTransformComponent->velocity.y() = BallObject::INITIAL_VELOCITY_Y;
+            ballTransformComponent->positionVector.x() = worldWidth/2 - (ballTransformComponent->dimensionVector.x() / 2);
+            ballTransformComponent->positionVector.y() = worldHeight/2 - (ballTransformComponent->dimensionVector.y() / 2);
+            ballTransformComponent->velocityVector.x() = BallObject::INITIAL_VELOCITY_X * (ballTransformComponent->velocityVector.x() < 0 ? -1 : 1);
+            ballTransformComponent->velocityVector.y() = BallObject::INITIAL_VELOCITY_Y;
         }
         else {
             ballTransformComponent->applyVelocity();
@@ -63,7 +63,7 @@ void MovementSystem::processBallMovement(BallObject* ballObject) const {
                         
                         // Calculate the position of where the ball hit the paddle
                         int sectionSize = gameObjectRect.h / PADDLE_SECTIONS;
-                        int hitPosition = std::abs((ballTransformComponent->position.y() + (ballTransformComponent->dimension.y() / 2)) - gameObjectRect.y) / sectionSize;
+                        int hitPosition = std::abs((ballTransformComponent->positionVector.y() + (ballTransformComponent->dimensionVector.y() / 2)) - gameObjectRect.y) / sectionSize;
                         
                         // Note: Only an upper-limit is required. If the absolute value is no longer used to determine the hit position
                         //       then a proper lower-limit is required.
@@ -71,19 +71,19 @@ void MovementSystem::processBallMovement(BallObject* ballObject) const {
                         
                         switch(hitPosition) {
                             case 0:
-                                ballTransformComponent->velocity.y() = -4;
+                                ballTransformComponent->velocityVector.y() = -4;
                                 break;
                             case 1:
-                                ballTransformComponent->velocity.y() = -2;
+                                ballTransformComponent->velocityVector.y() = -2;
                                 break;
                             case 2:
-                                ballTransformComponent->velocity.y() = 0;
+                                ballTransformComponent->velocityVector.y() = 0;
                                 break;
                             case 3:
-                                ballTransformComponent->velocity.y() = 2;
+                                ballTransformComponent->velocityVector.y() = 2;
                                 break;
                             case 4:
-                                ballTransformComponent->velocity.y() = 4;
+                                ballTransformComponent->velocityVector.y() = 4;
                                 break;
                             default:
                                 std::cerr << "Could not calculate hit position for " << hitPosition << std::endl;
@@ -102,19 +102,40 @@ void MovementSystem::processBallMovement(BallObject* ballObject) const {
 }
 
 void MovementSystem::processPaddleMovement(PaddleObject* paddleObject) const {
+    
+    // Calculate the direction that the paddle should go in
+    int direction = 0;
     PaddleInputComponent* paddleInputComponent = paddleObject->getComponent<PaddleInputComponent>();
     if(paddleInputComponent != nullptr) {
-        int direction = paddleInputComponent->getDirection();
-        if(direction != 0) {
-            TransformComponent* transform = paddleObject->getTransform();
-            Eigen::Vector2f velocity = transform->velocity;
-            velocity.y() = std::abs(velocity.y()) * direction;
-            
-            int newPosition = velocity.y() + transform->position.y();
-            if(newPosition >= 0 && newPosition + transform->dimension.y() <= worldHeight) {
-                transform->velocity = velocity;
-                transform->applyVelocity();
+        direction = paddleInputComponent->getDirection();
+    }
+    else {
+        for(GameObject* gameObject : this->gameObjects) {
+            if(dynamic_cast<BallObject*>(gameObject) != nullptr) {
+                int ballPositionY = gameObject->getTransform()->positionVector.y() + (gameObject->getTransform()->dimensionVector.y() / 2);
+                int paddlePositionY = paddleObject->getTransform()->positionVector.y() + (paddleObject->getTransform()->dimensionVector.y() / 2);
+                if(ballPositionY < paddlePositionY) {
+                    direction = -1;
+                }
+                else if(ballPositionY > paddlePositionY) {
+                    direction = 1;
+                }
+                                
+                break;
             }
+        }
+    }
+
+    // Apply the paddle movement
+    if(direction != 0) {
+        TransformComponent* transform = paddleObject->getTransform();
+        Eigen::Vector2f velocity = transform->velocityVector;
+        velocity.y() = std::abs(velocity.y()) * direction;
+        
+        int newPosition = velocity.y() + transform->positionVector.y();
+        if(newPosition >= 0 && newPosition + transform->dimensionVector.y() <= worldHeight) {
+            transform->velocityVector = velocity;
+            transform->applyVelocity();
         }
     }
 }
