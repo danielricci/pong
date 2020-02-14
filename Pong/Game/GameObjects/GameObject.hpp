@@ -13,8 +13,7 @@ public:
     template<typename T> T* getComponent() const {
         T* myComponent { nullptr };
         for(Component* component : components) {
-            myComponent = component->getComponent<T>();
-            if(myComponent != nullptr) {
+            if((myComponent = component->getComponent<T>()) != nullptr) {
                 break;
             }
         }

@@ -8,10 +8,11 @@ public:
         for(Component* component : components) {
             delete component;
         }
+        components.clear();
     }
     template<typename T> T* getComponent() {
         T* myComponent { dynamic_cast<T*>(this) };
-        if(myComponent != nullptr) {
+        if(myComponent == nullptr) {
             for(Component* component : components) {
                 myComponent = dynamic_cast<T*>(component);
                 if(myComponent != nullptr) {

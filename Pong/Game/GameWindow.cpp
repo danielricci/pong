@@ -7,36 +7,39 @@
 
 GameWindow::GameWindow(const char* title, int width, int height) {
     std::cout << "Application Initializing"<< std::endl;
-    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER) < 0) {
         std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
+        return;
     }
-    else {
-        window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
-        if(window == nullptr) {
-            std::cerr << "SDL window could not be created: " << SDL_GetError() << std::endl;
-        }
-        else {
-            renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-            if(renderer == nullptr) {
-                std::cerr << "SDL renderer could not be created: " << SDL_GetError() << std::endl;
-            }
-            else {
-                if(TTF_Init() < 0) {
-                    std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
-                }
-                else {
-                    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-                        std::cerr << "SDL_mixer could not be initilized: " << Mix_GetError() << std::endl;
-                    }
-                    else {
-                        world = new GameWorld(*window, *renderer);
-                        ready = true;
-                        std::cout << "Initialization Successful" << std::endl;
-                    }
-                }
-            }
-        }
+    
+    window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+    if(window == nullptr) {
+        std::cerr << "SDL window could not be created: " << SDL_GetError() << std::endl;
+        return;
     }
+    
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if(renderer == nullptr) {
+        std::cerr << "SDL renderer could not be created: " << SDL_GetError() << std::endl;
+        return;
+    }
+    
+    if(TTF_Init() < 0) {
+        std::cerr << "SDL_ttf could not be initialized: " << TTF_GetError() << std::endl;
+        return;
+    }
+
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        std::cerr << "SDL_mixer could not be initilized: " << Mix_GetError() << std::endl;
+        return;
+    }
+    
+    if(SDL_NumJoysticks() > 0) {
+        std::cout << "Joystick Detected!!!" << std::endl;
+    }
+    
+    world = new GameWorld(*window, *renderer);
+    ready = true;
 }
 
 GameWindow::~GameWindow() {
