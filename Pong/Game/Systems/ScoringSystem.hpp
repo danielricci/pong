@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game/GameObjects/BallObject.hpp"
+#include "Game/GameObjects/GameOverObject.hpp"
 #include "Game/GameObjects/ScoreObject.hpp"
 
 #include <SDL.h>
@@ -10,8 +11,10 @@
 class ScoringSystem {
 public:
     ScoringSystem(SDL_Window& window);
-    void process(BallObject* ballObject, const std::list<ScoreObject*>& scoreObjects);
+    void process(BallObject& ballObject, const std::list<ScoreObject*>& scoreObjects, GameOverObject& gameOverObject) const;
 private:
     int worldWidth;
     int worldHeight;
+    
+    const int MAX_GAME_SCORE { 13 };
 };

@@ -8,7 +8,7 @@
 void RenderSystem::update(GameObject* gameObject) {
     if(gameObject != nullptr) {
         RenderComponent* renderComponent = gameObject->getComponent<RenderComponent>();
-        if(renderComponent != nullptr) {
+        if(renderComponent != nullptr && renderComponent->isVisible) {
             SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
             TextComponent* textComponent = gameObject->getComponent<TextComponent>();
             TextRenderComponent* textRenderComponent = gameObject->getComponent<TextRenderComponent>();

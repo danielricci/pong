@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0311FB0123F7BB9E00DC4710 /* GameOverObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0311FAFF23F7BB9E00DC4710 /* GameOverObject.cpp */; };
 		0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032220192380FF9D004B0BD1 /* GameWindow.cpp */; };
 		032C4B4F236EFFB500B78C94 /* PaddleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */; };
 		0345100B23BAF56500530E54 /* ScoringSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0345100923BAF56500530E54 /* ScoringSystem.cpp */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		030A2389236F05D8000D0E2F /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
+		0311FAFF23F7BB9E00DC4710 /* GameOverObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverObject.cpp; sourceTree = "<group>"; };
+		0311FB0023F7BB9E00DC4710 /* GameOverObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameOverObject.hpp; sourceTree = "<group>"; };
 		0317C67F2352500C00D43455 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
 		032220192380FF9D004B0BD1 /* GameWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameWindow.cpp; sourceTree = "<group>"; };
 		0322201A2380FF9D004B0BD1 /* GameWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameWindow.hpp; sourceTree = "<group>"; };
@@ -104,13 +107,13 @@
 			isa = PBXGroup;
 			children = (
 				03EFD23C237E49CA006EF2A5 /* Components */,
+				03EFD235237E48BA006EF2A5 /* GameObjects */,
 				032220192380FF9D004B0BD1 /* GameWindow.cpp */,
 				0322201A2380FF9D004B0BD1 /* GameWindow.hpp */,
-				03EFD235237E48BA006EF2A5 /* GameObjects */,
-				03A78AFF23845F0000856F98 /* Primitives */,
-				03EBAAAD23918F4900F8BDE5 /* Systems */,
 				03EFD232237D004B006EF2A5 /* GameWorld.cpp */,
 				03EFD233237D004B006EF2A5 /* GameWorld.hpp */,
+				03A78AFF23845F0000856F98 /* Primitives */,
+				03EBAAAD23918F4900F8BDE5 /* Systems */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -118,8 +121,8 @@
 		0350441123C5251300CE0791 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				0350441623C5276A00CE0791 /* LICENSE.txt */,
 				0350441923C5277300CE0791 /* hit.wav */,
+				0350441623C5276A00CE0791 /* LICENSE.txt */,
 				0350441723C5277300CE0791 /* score.wav */,
 				0350441823C5277300CE0791 /* wall.wav */,
 			);
@@ -168,10 +171,10 @@
 		03EBAAAD23918F4900F8BDE5 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */,
+				03EBAAAF239190B400F8BDE5 /* MovementSystem.hpp */,
 				03987B5823955A110004639E /* RenderSystem.cpp */,
 				03987B5723955A110004639E /* RenderSystem.hpp */,
-				03EBAAAF239190B400F8BDE5 /* MovementSystem.hpp */,
-				03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */,
 				0345100923BAF56500530E54 /* ScoringSystem.cpp */,
 				0345100A23BAF56500530E54 /* ScoringSystem.hpp */,
 			);
@@ -181,8 +184,8 @@
 		03EDC3DB23B10F3C000A1AD9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0350441123C5251300CE0791 /* Sounds */,
 				03EDC3DC23B127FD000A1AD9 /* Fonts */,
+				0350441123C5251300CE0791 /* Sounds */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -198,14 +201,16 @@
 		03EFD235237E48BA006EF2A5 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
-				036CC4A023B26233006007C9 /* ScoreObject.cpp */,
-				036CC4A123B26234006007C9 /* ScoreObject.hpp */,
 				03B049A6239600E600D3E5B9 /* BallObject.cpp */,
 				03B049A5239600E500D3E5B9 /* BallObject.hpp */,
-				03EFD237237E48D9006EF2A5 /* GameObject.hpp */,
 				035DB9DF238B75D90025B2F7 /* GameObject.cpp */,
-				032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */,
+				03EFD237237E48D9006EF2A5 /* GameObject.hpp */,
+				0311FAFF23F7BB9E00DC4710 /* GameOverObject.cpp */,
+				0311FB0023F7BB9E00DC4710 /* GameOverObject.hpp */,
 				032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */,
+				032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */,
+				036CC4A023B26233006007C9 /* ScoreObject.cpp */,
+				036CC4A123B26234006007C9 /* ScoreObject.hpp */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -219,13 +224,13 @@
 				03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */,
 				03A1E57F238F56E900A02AB7 /* PaddleInputComponent.hpp */,
 				03987B54239559A60004639E /* RenderComponent.hpp */,
-				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
+				037BF8F723CAC40B00D7C4B3 /* SoundComponent.cpp */,
+				037BF8F823CAC40B00D7C4B3 /* SoundComponent.hpp */,
 				036CC4A323B26540006007C9 /* TextComponent.cpp */,
 				036CC4A423B26540006007C9 /* TextComponent.hpp */,
 				03775CAF23B6569400BFA1C6 /* TextRenderComponent.cpp */,
 				03775CB023B6569400BFA1C6 /* TextRenderComponent.hpp */,
-				037BF8F723CAC40B00D7C4B3 /* SoundComponent.cpp */,
-				037BF8F823CAC40B00D7C4B3 /* SoundComponent.hpp */,
+				035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */,
 				039E6C17234E30B0004CCD78 /* main.cpp in Sources */,
 				036CC4A223B26234006007C9 /* ScoreObject.cpp in Sources */,
+				0311FB0123F7BB9E00DC4710 /* GameOverObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

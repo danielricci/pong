@@ -11,12 +11,12 @@
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
-    
     // Get the world dimensions
-    int windowWidth { 0 };
-    int windowHeight { 0 };
     SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
-    
+    initialize();
+}
+
+void GameWorld::initialize() {
     // Setup the Paddles
     PaddleObject* paddle1 = new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
     paddle1->addComponent(new PaddleInputComponent(SDLK_a, SDLK_z));
@@ -36,21 +36,35 @@ renderer(renderer) {
     ScoreObject* scoreObject2 = new ScoreObject((windowWidth/2) + 30, 30, renderer);
     scoreObject2->setPaddleObject(*paddle2);
     gameObjects.push_front(scoreObject2);
+    
+    // Game over object
+    gameOverObject = new GameOverObject(windowWidth, windowHeight, renderer);
+    gameObjects.push_front(gameOverObject);
 }
 
-GameWorld::~GameWorld() {
-    
+void GameWorld::clean() {
     for(GameObject* gameObject : gameObjects) {
         delete gameObject;
+        gameObject = nullptr;
     }
+    gameObjects.clear();
+    
+    stopRendering = false;
+}
+
+void GameWorld::destroy() {
+    clean();
     
     delete movementSystem;
     delete renderSystem;
     delete scoringSystem;
 }
 
+GameWorld::~GameWorld() {
+    destroy();
+}
+
 void GameWorld::run() {
-    
     // Initial clearing of the screen before proceeding
     SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(&renderer);
@@ -62,17 +76,17 @@ void GameWorld::run() {
         
         SDL_Event event;
         while(SDL_PollEvent(&event) != 0) {
-            if(event.type == SDL_QUIT) {
-                isGameRunning = false;
+            if(event.type == SDL_QUIT || ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) && event.key.keysym.sym == SDLK_ESCAPE)) {
+                isGameQuit = true;
                 break;
             }
             else if(event.type == SDL_WINDOWEVENT) {
                 switch(event.window.event) {
                     case SDL_WINDOWEVENT_FOCUS_GAINED:
-                        isGamefocused = true;
+                        isWindowFocused = true;
                         break;
                     case SDL_WINDOWEVENT_FOCUS_LOST:
-                        isGamefocused = false;
+                        isWindowFocused = false;
                         break;
                 }
             }
@@ -80,43 +94,59 @@ void GameWorld::run() {
             switch(event.type) {
                 case SDL_KEYUP:
                 case SDL_KEYDOWN: {
-                    for(GameObject* gameObject : gameObjects) {
-                        InputComponent* inputComponent = gameObject->getComponent<InputComponent>();
-                        if(inputComponent != nullptr) {
-                            inputComponent->handleEvent(event);
+                    if(gameOverObject->getIsGameOver()) {
+                        if(event.key.keysym.sym == SDLK_RETURN) {
+                            clean();
+                            initialize();
+                        }
+                    }
+                    else {
+                        for(GameObject* gameObject : gameObjects) {
+                            InputComponent* inputComponent = gameObject->getComponent<InputComponent>();
+                            if(inputComponent != nullptr) {
+                                inputComponent->handleEvent(event);
+                            }
                         }
                     }
                 }
             }
         }
         
-        if(!isGameRunning) {
+        if(isGameQuit) {
             break;
         }
         
-        if(!isGamefocused) {
+        if(!isWindowFocused) {
             continue;
         }
-
-        // Move the game objects
-        movementSystem->process(gameObjects);
         
-        // Scoring System
-        scoringSystem->process(this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>());
-
+        if(!gameOverObject->getIsGameOver()) {
+            // Move the game objects
+            movementSystem->process(gameObjects);
         
-        // Render System
-        SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(&renderer);
-        for(GameObject* gameObject : gameObjects) {
-            renderSystem->update(gameObject);
+            // Scoring System
+            scoringSystem->process(*this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>(), *gameOverObject);
         }
         
-        // Render the field
-        renderPlayingField();
-        
-        // Blit everything
-        SDL_RenderPresent(&renderer);
+        if(!stopRendering) {
+            // Render System
+            SDL_SetRenderDrawColor(&renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+            SDL_RenderClear(&renderer);
+            for(GameObject* gameObject : gameObjects) {
+                renderSystem->update(gameObject);
+            }
+            
+            // Render the field
+            renderPlayingField();
+            
+            // Blit everything
+            SDL_RenderPresent(&renderer);
+            
+            // Rendering will occur once, then it gets blocked
+            if(gameOverObject->getIsGameOver()) {
+                stopRendering = true;
+            }
+        }
     }
 }
 
@@ -162,4 +192,8 @@ void GameWorld::updateFrameInformation() {
     }
     
     //std::cout << "Elapsed Time = " << elapsedTime << " | " << "Time = " << totalTime << " | Frames = " << totalFrames << " | FPS = " << framesPerSecond << " | Performance Counter = " << SDL_GetPerformanceCounter() << " | Performance Frequency = " << SDL_GetPerformanceFrequency() << std::endl;
+}
+
+void GameWorld::resetGame() {
+    
 }

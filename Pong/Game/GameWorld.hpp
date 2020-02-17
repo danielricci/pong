@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game/GameObjects/GameObject.hpp"
+#include "Game/GameObjects/GameOverObject.hpp"
 
 #include "Game/Systems/MovementSystem.hpp"
 #include "Game/Systems/RenderSystem.hpp"
@@ -15,23 +16,32 @@ public:
     GameWorld(SDL_Window& window, SDL_Renderer& renderer);
     ~GameWorld();
     void run();
+    
 private:
-
     SDL_Window& window;
+    int windowWidth { 0 };
+    int windowHeight { 0 };
+    
     SDL_Renderer& renderer;
     
     std::list<GameObject*> gameObjects;
-
-    MovementSystem* movementSystem = new MovementSystem(window);
-    RenderSystem* renderSystem = new RenderSystem(renderer);
-    ScoringSystem* scoringSystem = new ScoringSystem(window);
+    GameOverObject* gameOverObject { nullptr };
+    
+    MovementSystem* movementSystem { new MovementSystem(window) };
+    RenderSystem* renderSystem { new RenderSystem(renderer) };
+    ScoringSystem* scoringSystem { new ScoringSystem(window) };
     
     int framesPerSecond { 0 };
-    bool isGameRunning { true };
-    bool isGamefocused = false;
-
-    void updateFrameInformation();
+    bool isGameQuit { false };
+    bool isWindowFocused { false };
+    bool stopRendering { false };
+    
+    void clean();
+    void destroy();
+    void initialize();
     void renderPlayingField() const;
+    void resetGame();
+    void updateFrameInformation();
     
     template<typename T> T* getGameObject() {
         for(GameObject* gameObject : gameObjects) {
