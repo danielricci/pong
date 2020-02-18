@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include "Game/Components/SoundComponent.hpp"
 #include "Game/GameObjects/BallObject.hpp"
 #include "Game/GameObjects/GameOverObject.hpp"
 #include "Game/GameObjects/ScoreObject.hpp"
@@ -35,8 +36,12 @@
 class ScoringSystem {
 public:
     ScoringSystem(SDL_Window& window);
+    ~ScoringSystem();
     void process(BallObject& ballObject, const std::list<ScoreObject*>& scoreObjects, GameOverObject& gameOverObject) const;
 private:
+    
+    SoundComponent* gameOverSound = new SoundComponent("Resources/Sounds/gameover.wav");
+    
     int worldWidth;
     int worldHeight;
     

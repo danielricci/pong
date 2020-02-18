@@ -169,6 +169,7 @@ void GameWorld::run() {
             // Rendering will occur once, then it gets blocked
             if(gameOverObject->getIsGameOver()) {
                 stopRendering = true;
+                
             }
         }
     }

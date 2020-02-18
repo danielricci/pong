@@ -51,11 +51,12 @@
 		032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaddleObject.hpp; sourceTree = "<group>"; };
 		0345100923BAF56500530E54 /* ScoringSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoringSystem.cpp; sourceTree = "<group>"; };
 		0345100A23BAF56500530E54 /* ScoringSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScoringSystem.hpp; sourceTree = "<group>"; };
-		0350441623C5276A00CE0791 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		0350441723C5277300CE0791 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		0350441823C5277300CE0791 /* wall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wall.wav; sourceTree = "<group>"; };
 		0350441923C5277300CE0791 /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit.wav; sourceTree = "<group>"; };
 		0350F2B123A324FB0038A52E /* CollisionComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionComponent.hpp; sourceTree = "<group>"; };
+		0359174F23FB7C67004B79C7 /* repo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = repo; sourceTree = "<group>"; };
+		0359175023FB7D85004B79C7 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
@@ -121,8 +122,9 @@
 		0350441123C5251300CE0791 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				0359175023FB7D85004B79C7 /* gameover.wav */,
 				0350441923C5277300CE0791 /* hit.wav */,
-				0350441623C5276A00CE0791 /* LICENSE.txt */,
+				0359174F23FB7C67004B79C7 /* repo */,
 				0350441723C5277300CE0791 /* score.wav */,
 				0350441823C5277300CE0791 /* wall.wav */,
 			);

@@ -33,6 +33,13 @@ ScoringSystem::ScoringSystem(SDL_Window& window) {
     SDL_GetWindowSize(&window, &worldWidth, &worldHeight);
 }
 
+ScoringSystem::~ScoringSystem() {
+    if(gameOverSound != nullptr) {
+        delete gameOverSound;
+        gameOverSound = nullptr;
+    }
+}
+
 void ScoringSystem::process(BallObject& ballObject, const std::list<ScoreObject*>& scoreObjects, GameOverObject& gameOverObject) const {
     TransformComponent* ballTransformComponent { ballObject.getTransform() };
     if(ballTransformComponent->positionVector.x() <= 0 || ballTransformComponent->positionVector.x() + ballTransformComponent->dimensionVector.x() >= worldWidth) {
@@ -48,6 +55,7 @@ void ScoringSystem::process(BallObject& ballObject, const std::list<ScoreObject*
     
             if(farthestScoreObject->getScore() >= MAX_GAME_SCORE) {
                 gameOverObject.setIsGameOver(true);
+                gameOverSound->play(5);
             }
         }
     }

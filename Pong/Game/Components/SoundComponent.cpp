@@ -40,9 +40,9 @@ SoundComponent::~SoundComponent() {
     }
 }
 
-void SoundComponent::play() const {
+void SoundComponent::play(int loops) const {
     if(chunk != nullptr) {
-        Mix_PlayChannel(-1, chunk, 0);        
+        Mix_PlayChannel(-1, chunk, loops);
     }
     else {
         std::cerr << "Could not play sound, invalid chunk" << std::endl;
