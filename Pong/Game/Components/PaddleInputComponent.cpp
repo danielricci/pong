@@ -24,12 +24,19 @@
 
 #include "PaddleInputComponent.hpp"
 
+#include <iostream>
+
 PaddleInputComponent::PaddleInputComponent(SDL_Keycode keyUp, SDL_Keycode keyDown) {
     this->addBindings(keyUp, ACTION_MOVE_UP);
     this->addBindings(keyDown, ACTION_MOVE_DOWN);
 
     registerActionBinding(ACTION_MOVE_UP, std::bind(&PaddleInputComponent::onMoveUp, this, std::placeholders::_1));
     registerActionBinding(ACTION_MOVE_DOWN, std::bind(&PaddleInputComponent::onMoveDown, this, std::placeholders::_1));
+}
+
+PaddleInputComponent::PaddleInputComponent(SDL_Keycode keyUp, SDL_Keycode keyDown, SDL_GameControllerAxis axis) : PaddleInputComponent(keyUp, keyDown) {
+    this->addBindings(axis, ACTION_MOVE);
+    registerActionBinding(ACTION_MOVE, std::bind(&PaddleInputComponent::onMove, this, std::placeholders::_1));
 }
 
 void PaddleInputComponent::onMoveUp(const SDL_Event& event) {
@@ -39,7 +46,6 @@ void PaddleInputComponent::onMoveUp(const SDL_Event& event) {
             break;
         }
         case SDL_KEYUP: {
-            // FIXME: Can this be done better?
             if(direction == -1) {
                 direction = 0;
             }
@@ -55,11 +61,25 @@ void PaddleInputComponent::onMoveDown(const SDL_Event& event) {
             break;
         }
         case SDL_KEYUP: {
-            // FIXME: Can this be done better?
             if(direction == 1) {
                 direction = 0;
             }
             break;
+        }
+    }
+}
+
+
+void PaddleInputComponent::onMove(const SDL_Event& event) {
+    if(event.type == SDL_CONTROLLERAXISMOTION) {
+        if(event.caxis.value < -getDeadZone()) {
+            direction = -1;
+        }
+        else if(event.caxis.value > getDeadZone()) {
+            direction = 1;
+        }
+        else {
+            direction = 0;
         }
     }
 }

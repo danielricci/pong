@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0311FB0123F7BB9E00DC4710 /* GameOverObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0311FAFF23F7BB9E00DC4710 /* GameOverObject.cpp */; };
+		03219D472406B5F70050588A /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03219D452406B5F70050588A /* InputManager.cpp */; };
 		0322201B2380FF9D004B0BD1 /* GameWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032220192380FF9D004B0BD1 /* GameWindow.cpp */; };
 		032C4B4F236EFFB500B78C94 /* PaddleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */; };
 		0345100B23BAF56500530E54 /* ScoringSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0345100923BAF56500530E54 /* ScoringSystem.cpp */; };
@@ -45,18 +46,19 @@
 		0311FAFF23F7BB9E00DC4710 /* GameOverObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverObject.cpp; sourceTree = "<group>"; };
 		0311FB0023F7BB9E00DC4710 /* GameOverObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameOverObject.hpp; sourceTree = "<group>"; };
 		0317C67F2352500C00D43455 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
+		03219D452406B5F70050588A /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
+		03219D462406B5F70050588A /* InputManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputManager.hpp; sourceTree = "<group>"; };
 		032220192380FF9D004B0BD1 /* GameWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameWindow.cpp; sourceTree = "<group>"; };
 		0322201A2380FF9D004B0BD1 /* GameWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameWindow.hpp; sourceTree = "<group>"; };
 		032C4B4D236EFFB500B78C94 /* PaddleObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PaddleObject.cpp; sourceTree = "<group>"; };
 		032C4B4E236EFFB500B78C94 /* PaddleObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaddleObject.hpp; sourceTree = "<group>"; };
 		0345100923BAF56500530E54 /* ScoringSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoringSystem.cpp; sourceTree = "<group>"; };
 		0345100A23BAF56500530E54 /* ScoringSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScoringSystem.hpp; sourceTree = "<group>"; };
+		0350441623C5276A00CE0791 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		0350441723C5277300CE0791 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		0350441823C5277300CE0791 /* wall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wall.wav; sourceTree = "<group>"; };
 		0350441923C5277300CE0791 /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit.wav; sourceTree = "<group>"; };
 		0350F2B123A324FB0038A52E /* CollisionComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionComponent.hpp; sourceTree = "<group>"; };
-		0359174F23FB7C67004B79C7 /* repo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = repo; sourceTree = "<group>"; };
-		0359175023FB7D85004B79C7 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		035DB9DD238B73EF0025B2F7 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		035DB9DF238B75D90025B2F7 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		035DB9E2238B76AA0025B2F7 /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
@@ -104,9 +106,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03219D442406B07A0050588A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				03219D452406B5F70050588A /* InputManager.cpp */,
+				03219D462406B5F70050588A /* InputManager.hpp */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		032220182380FE60004B0BD1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				03219D442406B07A0050588A /* Managers */,
 				03EFD23C237E49CA006EF2A5 /* Components */,
 				03EFD235237E48BA006EF2A5 /* GameObjects */,
 				032220192380FF9D004B0BD1 /* GameWindow.cpp */,
@@ -122,9 +134,8 @@
 		0350441123C5251300CE0791 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				0359175023FB7D85004B79C7 /* gameover.wav */,
 				0350441923C5277300CE0791 /* hit.wav */,
-				0359174F23FB7C67004B79C7 /* repo */,
+				0350441623C5276A00CE0791 /* LICENSE.txt */,
 				0350441723C5277300CE0791 /* score.wav */,
 				0350441823C5277300CE0791 /* wall.wav */,
 			);
@@ -321,6 +332,7 @@
 				03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */,
 				037BF8F923CAC40B00D7C4B3 /* SoundComponent.cpp in Sources */,
 				0350F2B223A324FB0038A52E /* CollisionComponent.hpp in Sources */,
+				03219D472406B5F70050588A /* InputManager.cpp in Sources */,
 				03987B5923955A110004639E /* RenderSystem.cpp in Sources */,
 				035DB9E0238B75D90025B2F7 /* GameObject.cpp in Sources */,
 				03B049A7239600E600D3E5B9 /* BallObject.cpp in Sources */,

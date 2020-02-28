@@ -27,6 +27,7 @@
 #include "Game/GameObjects/PaddleObject.hpp"
 #include "Game/GameObjects/ScoreObject.hpp"
 #include "Game/GameWorld.hpp"
+#include "Game/Managers/InputManager.hpp"
 
 #include <SDL.h>
 
@@ -35,19 +36,20 @@
 GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
-    // Get the world dimensions
-    SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
     initialize();
 }
 
 void GameWorld::initialize() {
+    
+    // Get the window width and height and store it for use
+    SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
+        
     // Setup the Paddles
     PaddleObject* paddle1 = new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
-    paddle1->addComponent(new PaddleInputComponent(SDLK_a, SDLK_z));
-    gameObjects.push_front(paddle1);
-    
     PaddleObject* paddle2 = new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
+    paddle1->addComponent(new PaddleInputComponent(SDLK_a, SDLK_z, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY));
     paddle2->addComponent(new PaddleInputComponent(SDLK_j, SDLK_m));
+    gameObjects.push_front(paddle1);
     gameObjects.push_front(paddle2);
     
     // Setup the Ball
@@ -55,15 +57,22 @@ void GameWorld::initialize() {
     
     // Setup the Score
     ScoreObject* scoreObject1 = new ScoreObject((windowWidth/2) - 50, 30, renderer);
-    scoreObject1->setPaddleObject(*paddle1);
-    gameObjects.push_front(scoreObject1);
     ScoreObject* scoreObject2 = new ScoreObject((windowWidth/2) + 30, 30, renderer);
+    scoreObject1->setPaddleObject(*paddle1);
     scoreObject2->setPaddleObject(*paddle2);
+    gameObjects.push_front(scoreObject1);
     gameObjects.push_front(scoreObject2);
     
-    // Game over object
-    gameOverObject = new GameOverObject(windowWidth, windowHeight, renderer);
-    gameObjects.push_front(gameOverObject);
+    // Setup the game over object
+    gameObjects.push_front(new GameOverObject(windowWidth, windowHeight, renderer));
+    
+    // Note: For now initialize it this way, when more manager classes are
+    //       required then it will make sense to create a list of manager objects
+    InputManager::getInstance();
+}
+
+GameWorld::~GameWorld() {
+    destroy();
 }
 
 void GameWorld::clean() {
@@ -72,20 +81,25 @@ void GameWorld::clean() {
         gameObject = nullptr;
     }
     gameObjects.clear();
-    
-    stopRendering = false;
 }
 
 void GameWorld::destroy() {
     clean();
     
-    delete movementSystem;
-    delete renderSystem;
-    delete scoringSystem;
-}
-
-GameWorld::~GameWorld() {
-    destroy();
+    if(movementSystem != nullptr) {
+        delete movementSystem;
+        movementSystem = nullptr;
+    }
+    
+    if(renderSystem != nullptr) {
+        delete renderSystem;
+        renderSystem = nullptr;
+    }
+    
+    if(scoringSystem != nullptr) {
+        delete scoringSystem;
+        scoringSystem = nullptr;
+    }
 }
 
 void GameWorld::run() {
@@ -94,17 +108,16 @@ void GameWorld::run() {
     SDL_RenderClear(&renderer);
     SDL_RenderPresent(&renderer);
     
+    bool stopRendering { false };
+    
     while(true) {
         
         updateFrameInformation();
         
         SDL_Event event;
         while(SDL_PollEvent(&event) != 0) {
-            if(event.type == SDL_QUIT || ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) && event.key.keysym.sym == SDLK_ESCAPE)) {
-                isGameQuit = true;
-                break;
-            }
-            else if(event.type == SDL_WINDOWEVENT) {
+                        
+            if(event.type == SDL_WINDOWEVENT) {
                 switch(event.window.event) {
                     case SDL_WINDOWEVENT_FOCUS_GAINED:
                         isWindowFocused = true;
@@ -115,25 +128,20 @@ void GameWorld::run() {
                 }
             }
 
-            switch(event.type) {
-                case SDL_KEYUP:
-                case SDL_KEYDOWN: {
-                    if(gameOverObject->getIsGameOver()) {
-                        if(event.key.keysym.sym == SDLK_RETURN) {
-                            clean();
-                            initialize();
-                        }
-                    }
-                    else {
-                        for(GameObject* gameObject : gameObjects) {
-                            InputComponent* inputComponent = gameObject->getComponent<InputComponent>();
-                            if(inputComponent != nullptr) {
-                                inputComponent->handleEvent(event);
-                            }
-                        }
-                    }
-                }
+            if(event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+                isGameQuit = true;
+                break;
             }
+            
+            if(getGameObject<GameOverObject>()->getIsGameOver() && event.key.keysym.sym == SDLK_RETURN) {
+                clean();
+                initialize();
+                stopRendering = false;
+                break;
+            }
+            
+            // Handle any inputs
+            InputManager::getInstance()->process(event, getGameComponents<PaddleObject, InputComponent>());
         }
         
         if(isGameQuit) {
@@ -144,12 +152,12 @@ void GameWorld::run() {
             continue;
         }
         
-        if(!gameOverObject->getIsGameOver()) {
+        if(!getGameObject<GameOverObject>()->getIsGameOver()) {
             // Move the game objects
             movementSystem->process(gameObjects);
         
             // Scoring System
-            scoringSystem->process(*this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>(), *gameOverObject);
+            scoringSystem->process(*this->getGameObject<BallObject>(), this->getGameObjects<ScoreObject>(), *getGameObject<GameOverObject>());
         }
         
         if(!stopRendering) {
@@ -167,19 +175,14 @@ void GameWorld::run() {
             SDL_RenderPresent(&renderer);
             
             // Rendering will occur once, then it gets blocked
-            if(gameOverObject->getIsGameOver()) {
+            if(getGameObject<GameOverObject>()->getIsGameOver()) {
                 stopRendering = true;
-                
             }
         }
     }
 }
 
 void GameWorld::renderPlayingField() const {
-    int windowWidth { 0 };
-    int windowHeight { 0 };
-    SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
-    
     SDL_SetRenderDrawColor(&renderer, 0xFF, 0xFF, 0xFF, SDL_ALPHA_OPAQUE);
     for (int height = 0; height < windowHeight; ++height)
     {
@@ -217,8 +220,4 @@ void GameWorld::updateFrameInformation() {
     }
     
     //std::cout << "Elapsed Time = " << elapsedTime << " | " << "Time = " << totalTime << " | Frames = " << totalFrames << " | FPS = " << framesPerSecond << " | Performance Counter = " << SDL_GetPerformanceCounter() << " | Performance Frequency = " << SDL_GetPerformanceFrequency() << std::endl;
-}
-
-void GameWorld::resetGame() {
-    
 }

@@ -42,14 +42,13 @@ public:
     void run();
     
 private:
-    SDL_Window& window;
     int windowWidth { 0 };
     int windowHeight { 0 };
     
+    SDL_Window& window;
     SDL_Renderer& renderer;
     
     std::list<GameObject*> gameObjects;
-    GameOverObject* gameOverObject { nullptr };
     
     MovementSystem* movementSystem { new MovementSystem(window) };
     RenderSystem* renderSystem { new RenderSystem(renderer) };
@@ -58,13 +57,11 @@ private:
     int framesPerSecond { 0 };
     bool isGameQuit { false };
     bool isWindowFocused { false };
-    bool stopRendering { false };
     
     void clean();
     void destroy();
     void initialize();
     void renderPlayingField() const;
-    void resetGame();
     void updateFrameInformation();
     
     template<typename T> T* getGameObject() {
@@ -86,5 +83,19 @@ private:
             }
         }
         return objects;
+    }
+    
+    template<typename T, typename U> std::list<U*> getGameComponents() {
+        std::list<U*> components;
+        for(GameObject* gameObject : gameObjects) {
+            T* object = dynamic_cast<T*>(gameObject);
+            if(object != nullptr) {
+                U* component = gameObject->getComponent<U>();
+                if(component != nullptr) {
+                    components.push_back(component);
+                }
+            }
+        }
+        return components;
     }
 };

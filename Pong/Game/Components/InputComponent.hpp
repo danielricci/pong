@@ -37,11 +37,20 @@ public:
     InputComponent() = default;
     
     void addBindings(SDL_Keycode keyCode, const std::string& action) {
-        inputBindings[keyCode] = action;
+        inputBindings.emplace(keyCode, action);
+    }
+    
+    void addBindings(SDL_GameControllerAxis axis, const std::string& action) {
+        inputBindings.emplace(axis, action);
     }
     
     void handleEvent(const SDL_Event& event) {
+        
         InputBindingsMap::const_iterator inputIterator = inputBindings.find(event.key.keysym.sym);
+        if(inputIterator == inputBindings.end()) {
+            inputIterator = inputBindings.find(event.caxis.axis);
+        }
+        
         if(inputIterator != inputBindings.end()) {
             ActionBindingsMap::const_iterator actionIterator = actionBindings.find(inputIterator->second);
             if(actionIterator != actionBindings.end()) {
@@ -54,8 +63,13 @@ public:
         actionBindings[action] = functor;
     }
     
+protected:
+    virtual int getDeadZone() const {
+        return 8000;
+    }
+    
 private:
-    typedef std::unordered_map<SDL_Keycode, std::string> InputBindingsMap;
+    typedef std::unordered_multimap<unsigned int, std::string> InputBindingsMap;
     InputBindingsMap inputBindings;
     
     typedef std::unordered_map<std::string, std::function<void(const SDL_Event&)>> ActionBindingsMap;

@@ -28,27 +28,18 @@
 
 #include <SDL.h>
 
-#include <string>
+#include <list>
 
-class PaddleInputComponent : public InputComponent {
+class InputManager {
 public:
-    PaddleInputComponent(SDL_Keycode keyUp, SDL_Keycode keyDown);
-    PaddleInputComponent(SDL_Keycode keyUp, SDL_Keycode keyDown, SDL_GameControllerAxis axis);
-
-    
-    int getDirection() const {
-        return direction;
+    static InputManager* getInstance() {
+        static InputManager instance;
+        return &instance;
     }
-
-    const std::string ACTION_MOVE_UP = "MoveUp";
-    const std::string ACTION_MOVE_DOWN = "MoveDown";
-    const std::string ACTION_MOVE = "Move";
-    
+    void process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const;
 private:
+    InputManager();
+    ~InputManager();
     
-    int direction { 0 };
-    
-    void onMoveUp(const SDL_Event& event);
-    void onMoveDown(const SDL_Event& event);
-    void onMove(const SDL_Event& event);
+    SDL_GameController* gameController { nullptr };
 };

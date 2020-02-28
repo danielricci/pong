@@ -30,9 +30,9 @@
 #include <iostream>
 
 GameWindow::GameWindow(const char* title, int width, int height) {
-    std::cout << "Application Initializing"<< std::endl;
-    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER) < 0) {
-        std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
+    std::cout << "Application Initializing" << std::endl;
+    if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
+        std::cerr << "SDL video initialization failed: " << SDL_GetError() << std::endl;
         return;
     }
     
@@ -53,15 +53,16 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
 
+    if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
+        std::cerr << "SDL audio initialization failed: " << SDL_GetError() << std::endl;
+        return;
+    }
+    
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         std::cerr << "SDL_mixer could not be initilized: " << Mix_GetError() << std::endl;
         return;
     }
-    
-    if(SDL_NumJoysticks() > 0) {
-        std::cout << "Joystick Detected!!!" << std::endl;
-    }
-    
+        
     world = new GameWorld(*window, *renderer);
     ready = true;
 }
