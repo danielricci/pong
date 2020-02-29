@@ -48,7 +48,7 @@ void GameWorld::initialize() {
     PaddleObject* paddle1 = new PaddleObject(20, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
     PaddleObject* paddle2 = new PaddleObject(windowWidth - 20 - PaddleObject::WIDTH, (windowHeight / 2) - (PaddleObject::HEIGHT/2));
     paddle1->addComponent(new PaddleInputComponent(SDLK_a, SDLK_z, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY));
-    paddle2->addComponent(new PaddleInputComponent(SDLK_j, SDLK_m));
+    paddle2->addComponent(new PaddleInputComponent(SDLK_j, SDLK_m, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_RIGHTY));
     gameObjects.push_front(paddle1);
     gameObjects.push_front(paddle2);
     
