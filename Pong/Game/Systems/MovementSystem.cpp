@@ -95,7 +95,7 @@ void MovementSystem::processBallMovement(BallObject* ballObject) const {
                         
                         switch(hitPosition) {
                             case 0:
-                                ballTransformComponent->velocityVector.y() = -4;
+                                ballTransformComponent->velocityVector.y() = -5;
                                 break;
                             case 1:
                                 ballTransformComponent->velocityVector.y() = -2;
@@ -107,7 +107,7 @@ void MovementSystem::processBallMovement(BallObject* ballObject) const {
                                 ballTransformComponent->velocityVector.y() = 2;
                                 break;
                             case 4:
-                                ballTransformComponent->velocityVector.y() = 4;
+                                ballTransformComponent->velocityVector.y() = 5;
                                 break;
                             default:
                                 std::cerr << "Could not calculate hit position for " << hitPosition << std::endl;

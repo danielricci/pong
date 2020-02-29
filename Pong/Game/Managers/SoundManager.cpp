@@ -26,6 +26,10 @@
 
 #include <SDL_mixer.h>
 
+SoundManager::SoundManager() {
+    Mix_Volume(-1, 0);
+}
+
 void SoundManager::toggleSound() const {
     Mix_Volume(-1, Mix_Volume(-1, -1) != 0 ? 0 : 128);
 }

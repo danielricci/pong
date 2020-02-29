@@ -70,6 +70,10 @@ void GameWorld::initialize() {
     // Note: For now initialize it this way, when more manager classes are
     //       required then it will make sense to create a list of manager objects
     InputManager::getInstance();
+    SoundManager::getInstance();
+    
+    // By default the game runs in AI mode for player 2
+    paddle2->getComponent<PaddleInputComponent>()->enabled = false;
 }
 
 GameWorld::~GameWorld() {
@@ -145,7 +149,6 @@ void GameWorld::run() {
                 SoundManager::getInstance()->toggleSound();
             }
             else if(event.key.keysym.sym == SDLK_2 && event.type == SDL_KEYUP) {
-                
                 std::list<PaddleInputComponent*> inputs = getGameComponents<PaddleObject, PaddleInputComponent>();
                 if(inputs.size() == 2) {
                     inputs.front()->enabled = !inputs.front()->enabled;

@@ -26,6 +26,9 @@
 
 class SoundManager {
 public:
+        
+    SoundManager();
+
     static SoundManager* getInstance() {
         static SoundManager instance;
         return &instance;
