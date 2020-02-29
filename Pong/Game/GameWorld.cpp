@@ -141,9 +141,16 @@ void GameWorld::run() {
                 break;
             }
             
-            if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_1) {
+            if(event.key.keysym.sym == SDLK_1 && event.type == SDL_KEYUP) {
                 SoundManager::getInstance()->toggleSound();
             }
+            else if(event.key.keysym.sym == SDLK_2 && event.type == SDL_KEYUP) {
+                
+                std::list<PaddleInputComponent*> inputs = getGameComponents<PaddleObject, PaddleInputComponent>();
+                if(inputs.size() == 2) {
+                    inputs.front()->enabled = !inputs.front()->enabled;
+                };
+            };
             
             // Handle any inputs
             InputManager::getInstance()->process(event, getGameComponents<PaddleObject, InputComponent>());

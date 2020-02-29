@@ -53,6 +53,9 @@ public:
         }
         return component;
     }
+    
+    bool enabled { true };
+    
 private:
     std::list<Component*> components;
 };

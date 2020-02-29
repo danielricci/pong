@@ -130,7 +130,7 @@ void MovementSystem::processPaddleMovement(PaddleObject* paddleObject) const {
     // Calculate the direction that the paddle should go in
     int direction = 0;
     PaddleInputComponent* paddleInputComponent = paddleObject->getComponent<PaddleInputComponent>();
-    if(paddleInputComponent != nullptr) {
+    if(paddleInputComponent != nullptr && paddleInputComponent->enabled) {
         direction = paddleInputComponent->getDirection();
     }
     else {
