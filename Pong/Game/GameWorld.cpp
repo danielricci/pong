@@ -28,6 +28,7 @@
 #include "Game/GameObjects/ScoreObject.hpp"
 #include "Game/GameWorld.hpp"
 #include "Game/Managers/InputManager.hpp"
+#include "Game/Managers/SoundManager.hpp"
 
 #include <SDL.h>
 
@@ -138,6 +139,10 @@ void GameWorld::run() {
                 initialize();
                 stopRendering = false;
                 break;
+            }
+            
+            if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_1) {
+                SoundManager::getInstance()->toggleSound();
             }
             
             // Handle any inputs

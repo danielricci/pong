@@ -23,6 +23,7 @@
 		03987B5923955A110004639E /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03987B5823955A110004639E /* RenderSystem.cpp */; };
 		039E6C17234E30B0004CCD78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039E6C16234E30B0004CCD78 /* main.cpp */; };
 		03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */; };
+		03AE9265240A28F80043B667 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03AE9263240A28F80043B667 /* SoundManager.cpp */; };
 		03B049A7239600E600D3E5B9 /* BallObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B049A6239600E600D3E5B9 /* BallObject.cpp */; };
 		03EBAAB0239190B400F8BDE5 /* MovementSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03EBAAAE239190B400F8BDE5 /* MovementSystem.cpp */; };
 		03EDC3DA23B100A5000A1AD9 /* libSDL2_ttf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EDC3D923B1009B000A1AD9 /* libSDL2_ttf.a */; };
@@ -79,6 +80,8 @@
 		039E6C16234E30B0004CCD78 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03A1E57E238F56E900A02AB7 /* PaddleInputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PaddleInputComponent.cpp; sourceTree = "<group>"; };
 		03A1E57F238F56E900A02AB7 /* PaddleInputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaddleInputComponent.hpp; sourceTree = "<group>"; };
+		03AE9263240A28F80043B667 /* SoundManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
+		03AE9264240A28F80043B667 /* SoundManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SoundManager.hpp; sourceTree = "<group>"; };
 		03B049A5239600E500D3E5B9 /* BallObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BallObject.hpp; sourceTree = "<group>"; };
 		03B049A6239600E600D3E5B9 /* BallObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BallObject.cpp; sourceTree = "<group>"; };
 		03D47C5E2381B00A0004A67B /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 			children = (
 				03219D452406B5F70050588A /* InputManager.cpp */,
 				03219D462406B5F70050588A /* InputManager.hpp */,
+				03AE9263240A28F80043B667 /* SoundManager.cpp */,
+				03AE9264240A28F80043B667 /* SoundManager.hpp */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0345100B23BAF56500530E54 /* ScoringSystem.cpp in Sources */,
+				03AE9265240A28F80043B667 /* SoundManager.cpp in Sources */,
 				03A1E580238F56E900A02AB7 /* PaddleInputComponent.cpp in Sources */,
 				03775CB123B6569400BFA1C6 /* TextRenderComponent.cpp in Sources */,
 				037BF8F923CAC40B00D7C4B3 /* SoundComponent.cpp in Sources */,
