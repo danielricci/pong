@@ -32,9 +32,9 @@
 class BallObject : public GameObject {
 
 public:
-    inline static const int WIDTH { 10 };
-    inline static const int HEIGHT { 10 };
-    inline static const float INITIAL_VELOCITY_X { 7 };
+    inline static const int WIDTH { 9 };
+    inline static const int HEIGHT { 9 };
+    inline static const float INITIAL_VELOCITY_X { 9 };
     inline static const float INITIAL_VELOCITY_Y { 0 };
     
     BallObject(int x, int y);
