@@ -28,11 +28,14 @@ class SoundManager {
 public:
         
     SoundManager();
-
+    ~SoundManager();
+    
     static SoundManager* getInstance() {
         static SoundManager instance;
         return &instance;
     }
+    
+    void terminate();
     
     void toggleSound() const;
 };

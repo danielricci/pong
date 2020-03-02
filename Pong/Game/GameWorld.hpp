@@ -50,9 +50,9 @@ private:
     
     std::list<GameObject*> gameObjects;
     
-    MovementSystem* movementSystem { new MovementSystem(window) };
-    RenderSystem* renderSystem { new RenderSystem(renderer) };
-    ScoringSystem* scoringSystem { new ScoringSystem(window) };
+    MovementSystem* movementSystem { nullptr };
+    RenderSystem* renderSystem { nullptr };
+    ScoringSystem* scoringSystem { nullptr };
     
     int framesPerSecond { 0 };
     bool isGameQuit { false };

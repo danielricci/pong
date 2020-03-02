@@ -38,9 +38,17 @@ GameWorld::GameWorld(SDL_Window& window, SDL_Renderer& renderer) :
 window(window),
 renderer(renderer) {
     initialize();
+    
+    movementSystem = new MovementSystem(window);
+    renderSystem = new RenderSystem(renderer);
+    scoringSystem = new ScoringSystem(window);
 }
 
 void GameWorld::initialize() {
+    
+    // Initialize the manager classes
+    InputManager::getInstance();
+    SoundManager::getInstance();
     
     // Get the window width and height and store it for use
     SDL_GetWindowSize(&window, &windowWidth, &windowHeight);
@@ -66,12 +74,7 @@ void GameWorld::initialize() {
     
     // Setup the game over object
     gameObjects.push_front(new GameOverObject(windowWidth, windowHeight, renderer));
-    
-    // Note: For now initialize it this way, when more manager classes are
-    //       required then it will make sense to create a list of manager objects
-    InputManager::getInstance();
-    SoundManager::getInstance();
-    
+        
     // By default the game runs in AI mode for player 2
     paddle2->getComponent<PaddleInputComponent>()->enabled = false;
 }
@@ -90,6 +93,9 @@ void GameWorld::clean() {
 
 void GameWorld::destroy() {
     clean();
+    
+    SoundManager::getInstance()->terminate();
+    InputManager::getInstance()->terminate();
     
     if(movementSystem != nullptr) {
         delete movementSystem;

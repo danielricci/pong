@@ -41,12 +41,7 @@ InputManager::InputManager() {
 }
 
 InputManager::~InputManager() {
-    if(gameController != nullptr) {
-        SDL_GameControllerClose(gameController);
-        gameController = nullptr;
-    }
-    
-    SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
+    terminate();
 }
 
 void InputManager::process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const {
@@ -66,4 +61,13 @@ void InputManager::process(const SDL_Event& event, const std::list<InputComponen
             break;
         }
     }
+}
+
+void InputManager::terminate() {
+    if(gameController != nullptr) {
+        SDL_GameControllerClose(gameController);
+        gameController = nullptr;
+    }
+    
+    SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }

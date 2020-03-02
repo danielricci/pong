@@ -24,12 +24,33 @@
 
 #include "Game/Managers/SoundManager.hpp"
 
+#include <SDL.h>
 #include <SDL_mixer.h>
 
+#include <iostream>
+
 SoundManager::SoundManager() {
+    if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
+        std::cerr << "SDL audio initialization failed: " << SDL_GetError() << std::endl;
+        return;
+    }
+    
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        std::cerr << "SDL_mixer could not be initilized: " << Mix_GetError() << std::endl;
+        return;
+    }
+
     Mix_Volume(-1, 0);
+}
+
+SoundManager::~SoundManager() {
+    terminate();
 }
 
 void SoundManager::toggleSound() const {
     Mix_Volume(-1, Mix_Volume(-1, -1) != 0 ? 0 : 128);
+}
+
+void SoundManager::terminate() {
+    Mix_Quit();
 }

@@ -37,6 +37,7 @@ public:
         return &instance;
     }
     void process(const SDL_Event& event, const std::list<InputComponent*>& inputComponents) const;
+    void terminate();
 private:
     InputManager();
     ~InputManager();

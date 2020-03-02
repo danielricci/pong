@@ -24,7 +24,6 @@
 
 #include "GameWindow.hpp"
 
-#include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
 #include <iostream>
@@ -53,16 +52,6 @@ GameWindow::GameWindow(const char* title, int width, int height) {
         return;
     }
 
-    if(SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
-        std::cerr << "SDL audio initialization failed: " << SDL_GetError() << std::endl;
-        return;
-    }
-    
-    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-        std::cerr << "SDL_mixer could not be initilized: " << Mix_GetError() << std::endl;
-        return;
-    }
-        
     world = new GameWorld(*window, *renderer);
     ready = true;
 }
@@ -73,7 +62,6 @@ GameWindow::~GameWindow() {
         world = nullptr;
     }
 
-    Mix_Quit();
     TTF_Quit();
     
     if(renderer != nullptr) {
