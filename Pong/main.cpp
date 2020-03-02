@@ -27,5 +27,5 @@
 #include <SDL.h>
 
 int main(int argc, char** argv) {
-    GameWindow("Pong", 640, 800).show();
+    GameWindow("Pong", 600, 700).show();
 }
