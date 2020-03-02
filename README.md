@@ -11,7 +11,7 @@ Player One (Left Paddle):
 - Up = A
 - Down = D
 
-* The game has support for the XBox One controller. Make sure the controller is connected through bluetooth before the game launches. You can move your paddle up and down by using the left analog button.
+* The game has support for the XBox One controller. Make sure the controller is connected through bluetooth before the game launches. You can move your paddle up and down by using the left analog stick.
 
 Player Two (Right Paddle)
 - Up = J
